@@ -211,6 +211,21 @@ footer{border-top:1px solid var(--line);padding:100px 28px 28px}
  .lb-info>div:first-child{grid-column:span 2}
  .cursor{display:none}.card{cursor:pointer}
 }
+
+/* MENU MOBILE */
+.burger{display:none;background:none;border:1px solid rgba(255,255,255,.45);color:#fff;border-radius:99px;padding:9px 16px;font:inherit;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;align-items:center;gap:10px}
+.burger i{display:inline-flex;flex-direction:column;gap:4px}.burger i b{display:block;width:16px;height:1.5px;background:currentColor}
+.mnav{position:fixed;inset:0;z-index:200;background:#0c0c0b;display:flex;flex-direction:column;padding:22px 24px 34px;opacity:0;pointer-events:none;transition:opacity .4s}
+.mnav.open{opacity:1;pointer-events:auto}
+.mnav .mtop{display:flex;justify-content:space-between;align-items:center}
+.mnav .mclose{background:none;border:1px solid #444;color:#ecebe6;border-radius:99px;padding:9px 16px;font:inherit;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.mnav ul{list-style:none;margin-top:auto;margin-bottom:auto}
+.mnav li{overflow:hidden;border-bottom:1px solid #262624}
+.mnav li a{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;font-size:clamp(34px,10vw,46px);font-weight:500;letter-spacing:-.04em;color:#ecebe6;transform:translateY(100%);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.mnav li a span{font-size:13px;color:#8a8983;letter-spacing:.06em;font-weight:400}
+.mnav.open li a{transform:none}
+.mnav .msoc{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:#a9a8a2}
+@media (max-width:820px){nav ul{display:none!important}.burger{display:inline-flex}}
 </style>
 </head>
 <body>
@@ -225,7 +240,11 @@ footer{border-top:1px solid var(--line);padding:100px 28px 28px}
     <li class="m-hide"><a href="telechargements.html">Téléchargements</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">Menu <i><b></b><b></b></i></button>
 </nav>
+<div class="mnav" id="mnav" aria-hidden="true"><div class="mtop"><span class="logo" style="color:#ecebe6">Hugoprch<sup>®</sup></span><button class="mclose" id="mclose">Fermer ✕</button></div>
+<ul><li><a href="#travaux" data-m>Travaux<span>01</span></a></li><li><a href="#marques" data-m>Marques<span>02</span></a></li><li><a href="#apropos" data-m>À propos<span>03</span></a></li><li><a href="mediakit.html" data-m>Media kit<span>04</span></a></li><li><a href="telechargements.html" data-m>Téléchargements<span>05</span></a></li><li><a href="#contact" data-m>Contact<span>06</span></a></li></ul>
+<div class="msoc"><a href="https://www.instagram.com/hugoprch/">Instagram</a><a href="https://www.tiktok.com/@hugoprch">TikTok</a><a href="https://www.facebook.com/profile.php?id=61579980582496">Facebook</a><a href="mailto:hugoprch63@gmail.com">hugoprch63@gmail.com</a></div></div>
 
 <header class="hero" id="top">
   <picture><source media="(max-aspect-ratio: 4/5)" srcset="img/hero-pavin-m.jpg"><img src="img/hero-pavin.jpg" alt="Le lac Pavin en automne, les Monts Dore au fond"></picture>
@@ -423,5 +442,8 @@ lbClose.onclick=()=>lb.classList.remove('open');
 lbPrev.onclick=()=>openLb(cur_i-1);lbNext.onclick=()=>openLb(cur_i+1);
 addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')openLb(cur_i+1);if(e.key==='ArrowLeft')openLb(cur_i-1)});
 </script>
+<script>(function(){const m=document.getElementById('mnav'),b=document.getElementById('burger'),c=document.getElementById('mclose');
+const set=o=>{m.classList.toggle('open',o);m.setAttribute('aria-hidden',!o);b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';m.querySelectorAll('li a').forEach((a,i)=>a.style.transitionDelay=o?(0.08+i*0.05)+'s':'0s')};
+b.onclick=()=>set(true);c.onclick=()=>set(false);m.querySelectorAll('[data-m]').forEach(a=>a.addEventListener('click',()=>set(false)));addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();</script>
 </body>
 </html>
