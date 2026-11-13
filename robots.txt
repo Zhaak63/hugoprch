@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://zhaak63.github.io/hugoprch/sitemap.xml
+Sitemap: https://www.hugoprch.fr/sitemap.xml
