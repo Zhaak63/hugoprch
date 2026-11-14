@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hugoprch — Photographe de randonnée en Auvergne</title>
+<meta name="description" content="Hugoprch, photographe de randonnée en Auvergne : volcans, lacs de cratère, crêtes et mers de nuages, à pied et au drone. Collaborations avec les marques outdoor.">
+<link rel="canonical" href="https://www.hugoprch.fr/">
+<meta name="author" content="Hugoprch">
+<meta name="theme-color" content="#0c0c0b">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Hugoprch">
+<meta property="og:title" content="Hugoprch — Photographe de randonnée en Auvergne">
+<meta property="og:description" content="Volcans, lacs et sommets d'Auvergne, photographiés à pied et au drone. Portfolio et collaborations avec les marques outdoor.">
+<meta property="og:url" content="https://www.hugoprch.fr/">
+<meta property="og:image" content="https://www.hugoprch.fr/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le lac Pavin en automne, avec le nom Hugoprch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hugoprch — Photographe de randonnée en Auvergne">
+<meta name="twitter:description" content="Volcans, lacs et sommets d'Auvergne, photographiés à pied et au drone.">
+<meta name="twitter:image" content="https://www.hugoprch.fr/img/og.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Hugoprch","jobTitle":"Photographe de randonnée","url":"https://www.hugoprch.fr/","email":"mailto:hugoprch63@gmail.com","image":"https://www.hugoprch.fr/img/og.jpg","address":{"@type":"PostalAddress","addressRegion":"Auvergne","addressCountry":"FR"},"knowsAbout":["Photographie de paysage","Photographie de randonnée","Photographie au drone","Auvergne","Volcans d'Auvergne"],"sameAs":["https://www.instagram.com/hugoprch/","https://www.tiktok.com/@hugoprch","https://www.facebook.com/profile.php?id=61579980582496"]}</script>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/jpeg;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0b;--fg:#ecebe6;--mute:#8a8983;--line:#262624;--accent:#d9c7a3}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:"Inter Tight",system-ui,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.serif{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400}
+.label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px 28px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.logo{font-weight:600;letter-spacing:-.02em;font-size:18px}
+.logo sup{font-size:10px;font-weight:400}
+nav ul{display:flex;gap:28px;list-style:none;white-space:nowrap;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+nav ul a{position:relative}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:0;background:currentColor;transition:width .4s ease}
+nav ul a:hover::after{width:100%}
+/* HERO */
+.hero{position:relative;height:100vh;min-height:620px;overflow:hidden;background:#000}
+.hero img{position:absolute;inset:0;transform:scale(1.04);animation:zoom 12s ease-out forwards}
+@keyframes zoom{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.15) 60%,rgba(12,12,11,.95) 100%)}
+.hero-c{position:absolute;left:28px;right:28px;bottom:32px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.hero h1{font-weight:500;font-size:clamp(64px,15vw,240px);line-height:1.02;letter-spacing:-.055em}
+.hero h1 .l{overflow:hidden;display:block;padding-bottom:.16em;margin-bottom:-.16em}
+.hero h1 .l>span{display:inline-block;transform:translateY(110%);animation:up 1.2s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .l:nth-child(2)>span{animation-delay:.12s}
+@keyframes up{to{transform:none}}
+.hero-meta{max-width:310px;font-size:14px;color:#dddcd6;opacity:0;animation:fade 1s 1s forwards}
+.hero-meta p+p{margin-top:12px;color:#a9a8a2;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.hero-cap{position:absolute;top:50%;right:28px;z-index:2;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);opacity:0;animation:fade 1s 1.4s forwards}
+@keyframes fade{to{opacity:1}}
+/* SCROLL HINT */
+.hint{display:flex;align-items:center;gap:14px;align-self:flex-end;margin-bottom:22px;color:#fff;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:0;animation:fade 1s 1.6s forwards;cursor:pointer;background:none;border:0;font-family:inherit}
+.hint .c{position:relative;width:58px;height:58px;border:1px solid rgba(255,255,255,.55);border-radius:50%;display:grid;place-items:center;overflow:hidden;transition:background .3s,border-color .3s}
+.hint:hover .c{background:rgba(255,255,255,.12);border-color:#fff}
+.hint .c svg{animation:bob 1.8s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes bob{0%{transform:translateY(-14px);opacity:0}30%{opacity:1}70%{opacity:1}100%{transform:translateY(14px);opacity:0}}
+/* PROGRESS + TOP */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+.totop{position:fixed;right:24px;bottom:24px;z-index:70;width:54px;height:54px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(12,12,11,.7);backdrop-filter:blur(8px);color:#fff;display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(20px) scale(.9);pointer-events:none;transition:opacity .4s,transform .4s cubic-bezier(.2,.8,.2,1),background .3s}
+.totop.on{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{background:var(--fg);color:var(--bg)}
+.totop:hover svg{animation:lift .6s ease}
+@keyframes lift{0%{transform:none}50%{transform:translateY(-4px)}100%{transform:none}}
+/* NAV STATES */
+nav{transition:transform .5s cubic-bezier(.2,.8,.2,1),background .4s,padding .4s}
+nav.hide{transform:translateY(-110%)}
+nav.solid{background:rgba(12,12,11,.78);backdrop-filter:blur(10px);padding-top:16px;padding-bottom:16px;text-shadow:none}
+/* CARD REVEAL */
+.card.reveal{opacity:1;transform:none}
+.card .ph{clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1)}
+.card .ph img{transform:scale(1.18)}
+.card.in .ph{clip-path:inset(0 0 0 0)}
+.card.in .ph img{transform:scale(1);transition:transform 1.6s cubic-bezier(.2,.8,.2,1),filter .6s}
+.card.in:hover .ph img{transform:scale(1.05);transition:transform 1.1s cubic-bezier(.2,.8,.2,1),filter .6s}
+.card .meta{opacity:0;transform:translateY(10px);transition:opacity .8s .5s,transform .8s .5s}
+.card.in .meta{opacity:1;transform:none}
+/* LINE + WORD REVEALS */
+.svc-row{position:relative;border-bottom-color:transparent}
+.svc-row::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--line);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.2s cubic-bezier(.7,0,.2,1)}
+.svc-row.in::after{transform:scaleX(1)}
+.words .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.words .w>span{display:inline-block;transform:translateY(105%);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.words.in .w>span{transform:none}
+.about .ph img{transform:scale(1.15);will-change:transform}
+.cta{display:inline-block}
+.cta .serif{display:inline-block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.cta:hover .serif{transform:translateY(10px)}
+.filters button{position:relative;overflow:hidden}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.card .ph{clip-path:none}.card .ph img{transform:none}.reveal{opacity:1;transform:none}.words .w>span{transform:none}.hint{opacity:1}}
+@media (max-width:900px){.hint{align-self:flex-start;margin:0}.hint .c{width:48px;height:48px}.totop{right:16px;bottom:16px;width:48px;height:48px}}
+/* INTRO */
+.intro{padding:160px 28px 120px;display:grid;grid-template-columns:1fr 2fr;gap:40px;border-bottom:1px solid var(--line)}
+.intro h2{font-weight:400;font-size:clamp(28px,3.6vw,52px);line-height:1.08;letter-spacing:-.03em}
+.intro h2 .serif{color:var(--accent)}
+/* WORK */
+.work-h{display:flex;justify-content:space-between;align-items:flex-end;padding:90px 28px 34px;gap:20px;flex-wrap:wrap}
+.work-h h3{font-weight:500;font-size:clamp(40px,6vw,88px);letter-spacing:-.045em;line-height:.9}
+.work-h h3 sup{font-size:.25em;color:var(--mute);font-weight:400;letter-spacing:0;vertical-align:top;margin-left:6px}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{background:none;border:1px solid var(--line);color:var(--mute);font:inherit;font-size:13px;padding:8px 16px;border-radius:99px;cursor:pointer;transition:all .3s}
+.filters button:hover{color:var(--fg);border-color:#555}
+.filters button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.grid{display:flex;gap:20px;padding:0 28px 120px;align-items:flex-start}
+.col{flex:1;display:flex;flex-direction:column;gap:34px;min-width:0}
+.card{cursor:none;display:block}
+.card .ph{position:relative;overflow:hidden;background:#151513}
+.card .ph img{transition:transform 1.1s cubic-bezier(.2,.8,.2,1),filter .6s}
+.card:hover .ph img{transform:scale(1.05)}
+.grid.hov .card:not(:hover) .ph img{filter:brightness(.5) saturate(.7)}
+.card .meta{display:flex;justify-content:space-between;gap:10px;padding-top:12px;font-size:14px}
+.card .meta span:last-child{color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+.card .meta em{color:var(--mute);font-style:normal;margin-left:8px;font-size:12px}
+.reveal{opacity:0;transform:translateY(40px)}
+.reveal.in{opacity:1;transform:none;transition:opacity 1s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+/* CURSOR */
+.cursor{position:fixed;top:0;left:0;z-index:80;pointer-events:none;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center;font-size:12px;text-transform:uppercase;letter-spacing:.08em;transform:scale(0);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.cursor.on{transform:scale(1)}
+/* MARQUEE */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:26px 0;white-space:nowrap}
+.marquee div{display:inline-block;animation:mq 60s linear infinite;font-size:clamp(34px,5vw,70px);letter-spacing:-.04em}
+.marquee i{font-style:normal;color:var(--mute);margin:0 28px}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* FEATURE */
+.feature{position:relative;height:90vh;overflow:hidden}
+.feature video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feature .cap{position:absolute;left:28px;bottom:28px;right:28px;display:flex;justify-content:space-between;align-items:flex-end;z-index:2}
+.feature .cap p{font-size:clamp(26px,3.4vw,48px);letter-spacing:-.03em;line-height:1.05;max-width:760px}
+.feature::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.7))}
+/* BRANDS */
+.brands{padding:130px 28px;display:grid;grid-template-columns:1fr 2fr;gap:40px}
+.svc{border-top:1px solid var(--line)}
+.svc-row{display:grid;grid-template-columns:60px 1fr 1.3fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--line);align-items:baseline;transition:padding .4s}
+.svc-row:hover{padding-left:12px}
+.svc-row b{font-weight:400;font-size:clamp(22px,2.4vw,34px);letter-spacing:-.03em}
+.svc-row p{color:var(--mute);font-size:14px}
+.svc-row span{color:var(--mute);font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
+.stats div{border-top:1px solid var(--line);padding-top:16px}
+.stats strong{display:block;font-size:clamp(40px,4.5vw,64px);font-weight:400;letter-spacing:-.04em;line-height:1}
+.stats small{color:var(--mute);font-size:13px}
+.kit{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:40px}
+.kit small{color:var(--mute);font-size:12px;margin-left:8px}
+.btn{display:inline-block;background:var(--fg);color:var(--bg);border:1px solid var(--fg);border-radius:99px;padding:13px 24px;font:inherit;font-size:14px;cursor:pointer;transition:all .3s}
+.btn:hover{background:var(--accent);border-color:var(--accent)}
+.btn.ghost{background:none;color:var(--fg);border-color:#444}
+.btn.ghost:hover{border-color:var(--fg);background:none}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:70px;max-width:980px}
+.form .full{grid-column:1/-1}
+.form label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);margin-bottom:8px}
+.form input,.form select,.form textarea{width:100%;background:transparent;border:0;border-bottom:1px solid #333;color:var(--fg);font:inherit;font-size:17px;padding:10px 0;outline:none;transition:border-color .3s;border-radius:0}
+.form select option{background:#111}
+.form textarea{min-height:120px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--fg)}
+.form .row-end{display:flex;align-items:center;gap:18px;margin-top:14px}
+.form .msg{font-size:14px;color:var(--mute)}
+.form .msg.ok{color:var(--accent)}
+.hp{position:absolute;left:-9999px}
+@media (max-width:700px){.form{grid-template-columns:1fr}}
+/* ABOUT */
+.about{display:grid;grid-template-columns:5fr 7fr;gap:20px;padding:0 28px 140px}
+.about .ph{aspect-ratio:4/5;overflow:hidden}
+.about .txt{display:flex;flex-direction:column;justify-content:space-between;padding-left:40px}
+.about .txt p{font-size:clamp(20px,2vw,28px);line-height:1.25;letter-spacing:-.02em;max-width:640px}
+.about .txt p+p{margin-top:22px;font-size:15px;color:var(--mute);line-height:1.6;letter-spacing:0}
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:100px 28px 28px}
+.cta{display:block;font-size:clamp(56px,11vw,190px);line-height:.85;letter-spacing:-.06em;font-weight:500;transition:color .4s}
+.cta:hover{color:var(--accent)}
+.foot{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:90px;font-size:14px}
+.foot div>*{display:block;margin-top:6px}
+.foot a:hover{color:var(--accent)}
+.bottom{display:flex;justify-content:space-between;margin-top:70px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12px}
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:90;background:#080807;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .45s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:22px 28px;font-size:13px}
+.lb-top button,.lb-nav button{background:none;border:0;color:var(--fg);font:inherit;cursor:pointer;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.lb-top .idx{color:var(--mute);font-variant-numeric:tabular-nums}
+.lb-img{flex:1;min-height:0;margin:0 28px;position:relative}
+.lb-img img{object-fit:contain;transform:scale(.98);opacity:0;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity .5s}
+.lb-img img.ok{transform:none;opacity:1}
+.lb-nav{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.lb-nav button{pointer-events:auto;padding:20px;font-size:22px;opacity:.6;transition:opacity .3s}
+.lb-nav button:hover{opacity:1}
+.lb-info{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr;gap:20px;padding:22px 28px 28px;font-size:13px;align-items:start}
+.lb-info h4{font-size:30px;font-weight:500;letter-spacing:-.03em;line-height:1}
+.lb-info .leg{color:var(--mute);margin-top:10px;max-width:520px;font-size:13px}
+.lb-info span{display:block;color:var(--mute);font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+@media (max-width:560px){.m-hide{display:none}}
+@media (max-width:900px){
+ nav ul{gap:14px;font-size:11px}
+ .intro,.brands,.about{grid-template-columns:1fr}
+ .about .txt{padding:30px 0 0}
+ .hero-c{flex-direction:column;align-items:flex-start}
+ .hero-cap{display:none}
+ .foot{grid-template-columns:1fr 1fr}
+ .svc-row{grid-template-columns:40px 1fr}.svc-row p{grid-column:2}
+ .stats{grid-template-columns:1fr}
+ .lb-info{grid-template-columns:1fr 1fr}
+ .lb-info>div:first-child{grid-column:span 2}
+ .cursor{display:none}.card{cursor:pointer}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="logo">Hugoprch<sup>®</sup></a>
+  <ul>
+    <li><a href="#travaux">Travaux</a></li>
+    <li class="m-hide"><a href="#marques">Marques</a></li>
+    <li class="m-hide"><a href="#apropos">À propos</a></li>
+    <li class="m-hide"><a href="mediakit.html">Media kit</a></li>
+    <li class="m-hide"><a href="telechargements.html">Téléchargements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <picture><source media="(max-aspect-ratio: 4/5)" srcset="img/hero-pavin-m.jpg"><img src="img/hero-pavin.jpg" alt="Le lac Pavin en automne, les Monts Dore au fond"></picture>
+  <div class="hero-cap">Lac Pavin — Monts Dore — 6 novembre 2026</div>
+  <div class="hero-c">
+    <h1><span class="l"><span>Hugoprch<sup style="font-size:.18em;vertical-align:top;letter-spacing:0">®</sup></span></span></h1>
+    <button class="hint" id="hint" aria-label="Descendre vers les photos"><span class="c"><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1v19M1.5 13.5 8 20l6.5-6.5"/></svg></span><span>Découvrir</span></button>
+    <div class="hero-meta">
+      <p>Photographe de randonnée en Auvergne : volcans, crêtes et lacs de cratère, au sol et au drone, de l'aube au dernier rayon.</p>
+      <p>Chaîne des Puys — Monts Dore — Cézallier</p>
+    </div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="label reveal">(01) Approche</div>
+  <h2 class="words" id="introH">Je pars avant le jour pour être au sommet quand la lumière arrive, et je mets ces images au service des marques outdoor qui veulent montrer <span class="serif">le terrain tel qu'il est vraiment.</span></h2>
+</section>
+
+<section id="travaux">
+  <div class="work-h">
+    <h3 class="reveal">Sélection<sup id="count">44</sup></h3>
+    <div class="filters reveal" id="filters">
+      <button class="on" data-f="all">Tout</button>
+      <button data-f="automne">Automne</button>
+      <button data-f="sommets">Sommets &amp; crêtes</button>
+      <button data-f="lacs">Lacs</button>
+      <button data-f="nuages">Mers de nuages</button>
+      <button data-f="hiver">Hiver</button>
+      <button data-f="flore">Faune &amp; flore</button>
+      <button id="sortBtn" style="margin-left:10px">Plus récentes ↓</button>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<div class="marquee"><div id="mq"></div></div>
+
+<section class="feature" id="feature">
+  <video autoplay muted loop playsinline preload="metadata" poster="img/pavin-drone-poster.jpg" aria-label="Le drone traverse les nuages au-dessus du lac Pavin"><source src="img/pavin-drone.mp4" type="video/mp4"></video>
+  <div class="cap"><p>Traverser la couche, <span class="serif">et le Pavin apparaît.</span></p><span class="label" style="color:#ccc">Lac Pavin au drone — 6 novembre 2026</span></div>
+</section>
+
+<section class="brands" id="marques">
+  <div class="label reveal">(02) Pour les marques</div>
+  <div>
+    <div class="svc">
+      <div class="svc-row reveal"><span>01</span><b>Shooting produit terrain</b><p>Chaussures, sacs, vêtements portés en conditions réelles sur les crêtes des Monts Dore et de la Chaîne des Puys.</p></div>
+      <div class="svc-row reveal"><span>02</span><b>Images au drone</b><p>Vues aériennes des lacs de cratère, des arêtes et des mers de nuages, en photo et en vidéo.</p></div>
+      <div class="svc-row reveal"><span>03</span><b>Contenu Instagram</b><p>Séries et carrousels pensés pour les réseaux, au format vertical, prêts à publier.</p></div>
+      <div class="svc-row reveal"><span>04</span><b>Licence d'images</b><p>Accès à ma photothèque de paysages auvergnats pour vos usages éditoriaux et publicitaires.</p></div>
+    </div>
+    <div class="stats">
+      <div class="reveal"><strong data-count="59.6" data-suf=" k" data-dec="1">59,6 k</strong><small>Vues sur Instagram en 90 jours</small></div>
+      <div class="reveal"><strong data-count="82" data-suf=" %" data-dec="0">82 %</strong><small>De ces vues viennent de non-abonnés : du nouveau public à chaque post</small></div>
+      <div class="reveal"><strong data-count="9.7" data-suf=" k" data-dec="1">9,7 k</strong><small>Vues sur un seul post, plus de 8 fois mon nombre d'abonnés</small></div>
+    </div>
+    <div class="kit reveal"><a href="mediakit.html" class="btn">Voir le media kit ↗</a><a href="hugoprch-mediakit.pdf" class="btn ghost">Télécharger en PDF</a><small>Statistiques Instagram au 13 novembre 2026</small></div>
+  </div>
+</section>
+
+<section class="about" id="apropos">
+  <div class="ph reveal"><img src="img/23-face-au-massif.jpg" alt="Randonneur face au massif enneigé"></div>
+  <div class="txt reveal">
+    <div class="label">(03) À propos</div>
+    <div>
+      <p>Auvergnat, je photographie les paysages que je parcours à pied, <span class="serif" style="color:var(--accent)">sac sur le dos et drone dans la poche.</span></p>
+      <p>Mers de nuages sur le Cézallier, lac Pavin au lever, arêtes des Monts Dore au solstice, Chaîne des Puys sous le givre du 31 décembre : je raconte la randonnée comme on la vit. J'aide les marques à montrer leurs produits là où ils prennent tout leur sens, dehors.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="label" style="margin-bottom:24px">(04) Travaillons ensemble</div>
+  <a class="cta" href="#form">Écrivez-moi<span class="serif" style="font-weight:400"> ↓</span></a>
+  <form class="form" id="form" novalidate>
+    <div><label for="f-nom">Nom *</label><input id="f-nom" name="Nom" required autocomplete="name"></div>
+    <div><label for="f-mail">E-mail *</label><input id="f-mail" name="email" type="email" required autocomplete="email"></div>
+    <div><label for="f-marque">Marque / entreprise</label><input id="f-marque" name="Marque" autocomplete="organization"></div>
+    <div><label for="f-type">Type de projet</label><select id="f-type" name="Projet"><option>Shooting produit terrain</option><option>Images au drone</option><option>Contenu Instagram</option><option>Licence d'images</option><option>Autre</option></select></div>
+    <div><label for="f-budget">Budget indicatif</label><select id="f-budget" name="Budget"><option>À définir</option><option>Échange de produits</option><option>Moins de 300 €</option><option>300 – 800 €</option><option>800 – 2 000 €</option><option>Plus de 2 000 €</option></select></div>
+    <div><label for="f-date">Période souhaitée</label><input id="f-date" name="Periode" placeholder="ex. printemps 2027"></div>
+    <div class="full"><label for="f-msg">Votre projet *</label><textarea id="f-msg" name="Message" required></textarea></div>
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off">
+    <div class="full row-end"><button class="btn" type="submit" id="f-send">Envoyer la demande</button><span class="msg" id="f-msg-out"></span></div>
+  </form>
+  <div class="foot">
+    <div><span class="label">Contact</span><a href="mailto:hugoprch63@gmail.com">hugoprch63@gmail.com</a></div>
+    <div><span class="label">Réseaux</span><a href="https://www.instagram.com/hugoprch/">Instagram — @hugoprch</a><a href="https://www.tiktok.com/@hugoprch">TikTok — @hugoprch</a><a href="https://www.facebook.com/profile.php?id=61579980582496">Facebook — Hugoprch</a></div>
+    <div><span class="label">Basé en</span><span>Auvergne, France</span></div>
+    <div><span class="label">Pages</span><a href="#travaux">Travaux</a><a href="#marques">Marques</a><a href="#apropos">À propos</a><a href="telechargements.html">Téléchargements</a><a href="mediakit.html">Media kit</a></div>
+  </div>
+  <div class="bottom"><span>© 2026 Hugoprch — Toutes les photos sont protégées</span><span>Photographie de randonnée — Auvergne</span></div>
+</footer>
+
+<div class="progress" id="progress"></div>
+<button class="totop" id="totop" aria-label="Remonter en haut de la page"><svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19V2M1.5 8.5 8 2l6.5 6.5"/></svg></button>
+<div class="cursor" id="cursor">Voir</div>
+
+<div class="lb" id="lb">
+  <div class="lb-top"><span class="logo">Hugoprch<sup>®</sup></span><span class="idx" id="lbI"></span><button id="lbClose">Fermer ✕</button></div>
+  <div class="lb-img"><img id="lbImg" alt=""><div class="lb-nav"><button id="lbPrev" aria-label="Précédente">←</button><button id="lbNext" aria-label="Suivante">→</button></div></div>
+  <div class="lb-info">
+    <div><h4 id="lbT"></h4><p class="leg" id="lbLeg"></p></div>
+    <div><span>Région</span><div id="lbR"></div></div>
+    <div><span>Date</span><div id="lbD"></div></div>
+    <div><span>Heure</span><div id="lbH"></div></div>
+    <div><span>Altitude</span><div id="lbA"></div></div>
+  </div>
+</div>
+
+<script>
+const P=[{"n": 200, "t": "Servière et la Chaîne des Puys", "reg": "Monts Dore", "lieu": "Lac de Servière", "date": "9 novembre 2026", "iso": "2026-11-09", "heure": "14 h 23", "alt": "1463", "coord": "45.6393° N · 2.8540° E", "leg": "Le lac au milieu des sapins et, tout au fond, l'alignement des puys sur l'horizon.", "src": "img/serviere-01.jpg", "w": 1560, "h": 878, "cat": "lacs"}, {"n": 201, "t": "Le lac d'en haut", "reg": "Monts Dore", "lieu": "Lac de Servière", "date": "9 novembre 2026", "iso": "2026-11-09", "heure": "14 h 25", "alt": "1601", "coord": "45.6408° N · 2.8578° E", "leg": "Le drone grimpe à 1 600 m : le lac devient un œil sombre au milieu de la forêt, la plaine derrière.", "src": "img/serviere-02.jpg", "w": 878, "h": 1560, "cat": "lacs"}, {"n": 202, "t": "Turquoise et sapins", "reg": "Monts Dore", "lieu": "Lac de Servière", "date": "9 novembre 2026", "iso": "2026-11-09", "heure": "14 h 26", "alt": "1599", "coord": "45.6440° N · 2.8585° E", "leg": "À la verticale de la rive : l'eau claire laisse voir le fond, la forêt pique de quelques touches d'automne.", "src": "img/serviere-03.jpg", "w": 1560, "h": 878, "cat": "lacs"}, {"n": 203, "t": "La rive à l'aplomb", "reg": "Monts Dore", "lieu": "Lac de Servière", "date": "9 novembre 2026", "iso": "2026-11-09", "heure": "14 h 27", "alt": "1599", "coord": "45.6446° N · 2.8570° E", "leg": "Une bande de sable entre le turquoise et les sapins, quelques mélèzes déjà orange.", "src": "img/serviere-04.jpg", "w": 878, "h": 1560, "cat": "lacs"}, {"n": 204, "t": "La voisine du sentier", "reg": "Monts Dore", "lieu": "Lac de Servière", "date": "9 novembre 2026", "iso": "2026-11-09", "heure": "", "alt": "", "coord": "", "leg": "Sur le chemin du retour, une vache curieuse vient voir l'objectif de près.", "src": "img/serviere-05.jpg", "w": 1040, "h": 1560, "cat": "flore"}, {"n": 100, "t": "La barque rouge", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "", "alt": "", "coord": "", "leg": "Une barque retournée sur le ponton, et en face toute la rive qui a viré au roux.", "src": "img/pavin-01.jpg", "w": 1040, "h": 1560, "cat": "automne"}, {"n": 101, "t": "Le lac à travers les hêtres", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "", "alt": "", "coord": "", "leg": "Les branches basses encadrent le lac. Début novembre, les hêtres du cratère sont au maximum.", "src": "img/pavin-02.jpg", "w": 1040, "h": 1560, "cat": "automne"}, {"n": 102, "t": "Cadre d'automne", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "", "alt": "", "coord": "", "leg": "Rien que des feuilles et de l'eau : le bleu du Pavin vu à travers un rideau orange.", "src": "img/pavin-03.jpg", "w": 1040, "h": 1560, "cat": "automne"}, {"n": 103, "t": "Bois flotté", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "", "alt": "", "coord": "", "leg": "Au bord de l'eau, les troncs tombés et le tapis de feuilles. La rive opposée en pleine couleur.", "src": "img/pavin-04.jpg", "w": 1560, "h": 1040, "cat": "automne"}, {"n": 104, "t": "Sous-bois doré", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "", "alt": "", "coord": "", "leg": "Le sentier du tour du lac, sous les hêtres. La lumière passe à travers les feuilles jaunes.", "src": "img/pavin-05.jpg", "w": 1040, "h": 1560, "cat": "automne"}, {"n": 105, "t": "Les Monts Dore derrière le lac", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "", "alt": "", "coord": "", "leg": "Entre deux sapins, le lac et, au fond, les sommets des Monts Dore sous les nuages.", "src": "img/pavin-06.jpg", "w": 1040, "h": 1560, "cat": "automne"}, {"n": 106, "t": "La rive en hêtres", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "", "alt": "", "coord": "", "leg": "Une rangée de troncs et, derrière, le turquoise du lac qui perce entre les arbres.", "src": "img/pavin-07.jpg", "w": 1560, "h": 1040, "cat": "automne"}, {"n": 107, "t": "La forêt rousse", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "", "alt": "", "coord": "", "leg": "Les sapins au sommet, les hêtres en dessous : la pente du cratère en deux couleurs.", "src": "img/pavin-08.jpg", "w": 1560, "h": 1040, "cat": "automne"}, {"n": 108, "t": "Le hêtre penché", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "", "alt": "", "coord": "", "leg": "Un seul arbre au-dessus de l'eau, les feuilles qui tombent une à une dans le lac.", "src": "img/pavin-09.jpg", "w": 1040, "h": 1560, "cat": "automne"}, {"n": 109, "t": "Le Pavin et le plateau", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "15 h 02", "alt": "1374", "coord": "45.4952° N · 2.8928° E", "leg": "Le drone s'élève au-dessus du cratère : le lac, sa couronne d'automne et le plateau jusqu'aux sommets.", "src": "img/pavin-10.jpg", "w": 1560, "h": 878, "cat": "automne"}, {"n": 110, "t": "La lisière à la verticale", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "15 h 01", "alt": "1495", "coord": "45.4928° N · 2.8899° E", "leg": "Vue d'aplomb sur la rive : la forêt orange tombe d'un coup dans l'eau bleu profond.", "src": "img/pavin-11.jpg", "w": 878, "h": 1560, "cat": "automne"}, {"n": 111, "t": "La couronne d'automne", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "15 h 00", "alt": "1495", "coord": "45.4929° N · 2.8910° E", "leg": "Le bord du cratère vu d'en haut, les sapins et les hêtres mélangés autour du lac.", "src": "img/pavin-12.jpg", "w": 1560, "h": 878, "cat": "automne"}, {"n": 112, "t": "Le massif au-dessus des forêts", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "6 novembre 2026", "iso": "2026-11-06", "heure": "14 h 58", "alt": "1724", "coord": "45.4942° N · 2.8953° E", "leg": "Le drone se retourne vers le massif : prairies d'altitude et forêts rousses sous un grand ciel bleu.", "src": "img/pavin-13.jpg", "w": 878, "h": 1560, "cat": "automne"}, {"n": 1, "t": "Pavin, une heure plus tard", "reg": "Monts Dore", "lieu": "Lac Pavin", "date": "18 août 2026", "iso": "2026-08-18", "heure": "07 h 49", "alt": "1680", "coord": "45.4941° N · 2.8992° E", "leg": "Même matin que la mer de nuages. Le lac de cratère, parfaitement rond, encore à l'ombre de sa rive nord.", "src": "img/01-pavin-une-heure-plus-tard.jpg", "w": 1560, "h": 878, "cat": "lacs"}, {"n": 2, "t": "Le lac entre les pins", "reg": "Monts Dore", "lieu": "", "date": "18 août 2026", "iso": "2026-08-18", "heure": "07 h 44", "alt": "", "coord": "", "leg": "Cinq minutes avant de faire décoller le drone. La brume était encore accrochée à la rive d'en face.", "src": "img/02-le-lac-entre-les-pins.jpg", "w": 1170, "h": 1560, "cat": "lacs"}, {"n": 3, "t": "Un sommet au-dessus de la couche", "reg": "Cézallier", "lieu": "", "date": "18 août 2026", "iso": "2026-08-18", "heure": "06 h 39", "alt": "1553", "coord": "45.4531° N · 2.8373° E", "leg": "Quatre minutes après la précédente, le ciel vire au rose. Au nord, un sommet et son antenne dépassent tout juste des nuages.", "src": "img/03-un-sommet-au-dessus-de-la-couche.jpg", "w": 1560, "h": 878, "cat": "nuages"}, {"n": 4, "t": "Mer de nuages, 6 h 35", "reg": "Cézallier", "lieu": "", "date": "18 août 2026", "iso": "2026-08-18", "heure": "06 h 35", "alt": "1555", "coord": "45.4531° N · 2.8373° E", "leg": "Le drone perce la couche à 1 554 m. Tout ce qui est en dessous est resté dans le gris jusqu'à midi.", "src": "img/04-mer-de-nuages-6-h-35.jpg", "w": 877, "h": 1560, "cat": "nuages"}, {"n": 5, "t": "Le puy de Dôme d'en haut", "reg": "Chaîne des Puys", "lieu": "Puy de Dôme", "date": "8 août 2026", "iso": "2026-08-08", "heure": "21 h 04", "alt": "1777", "coord": "45.7719° N · 2.9587° E", "leg": "Neuf heures du soir en août. L'antenne, les vestiges du temple de Mercure et les lacets qui montent au sommet.", "src": "img/05-le-puy-de-dome-d-en-haut.jpg", "w": 1560, "h": 878, "cat": "sommets"}, {"n": 7, "t": "Le platelage", "reg": "Chaîne des Puys", "lieu": "", "date": "18 juillet 2026", "iso": "2026-07-18", "heure": "12 h 59", "alt": "", "coord": "", "leg": "Le chemin de bois file droit vers le puy de Dôme. Un des rares moments de la journée où il n'y avait personne devant.", "src": "img/07-le-platelage.jpg", "w": 1170, "h": 1560, "cat": "sommets"}, {"n": 8, "t": "Par l'ouverture", "reg": "Chaîne des Puys", "lieu": "", "date": "18 juillet 2026", "iso": "2026-07-18", "heure": "12 h 08", "alt": "", "coord": "", "leg": "Une brèche dans la roche qui cadre le puy d'en face. Lumière dure dehors, ombre franche dedans — plein midi.", "src": "img/08-par-l-ouverture.jpg", "w": 1170, "h": 1560, "cat": "sommets"}, {"n": 9, "t": "Le point de vue", "reg": "Monts Dore", "lieu": "", "date": "20 juin 2026", "iso": "2026-06-20", "heure": "19 h 51", "alt": "", "coord": "", "leg": "Dernier cadrage de la série : le drone redescend et s'élargit pour prendre toute la vallée.", "src": "img/09-le-point-de-vue.jpg", "w": 1560, "h": 878, "cat": "sommets"}, {"n": 10, "t": "Pause", "reg": "Monts Dore", "lieu": "", "date": "20 juin 2026", "iso": "2026-06-20", "heure": "19 h 50", "alt": "", "coord": "", "leg": "Assis au sommet, le ciel prend les trois quarts du cadre. Solstice d'été, il reste plus d'une heure de jour.", "src": "img/10-pause.jpg", "w": 877, "h": 1560, "cat": "sommets"}, {"n": 11, "t": "Le sentier de crête", "reg": "Monts Dore", "lieu": "", "date": "20 juin 2026", "iso": "2026-06-20", "heure": "19 h 49", "alt": "", "coord": "", "leg": "Le chemin suit l'arête sur près d'un kilomètre. Personne d'autre dessus ce soir-là.", "src": "img/11-le-sentier-de-crete.jpg", "w": 1560, "h": 878, "cat": "sommets"}, {"n": 12, "t": "Cirrus roses", "reg": "Monts Dore", "lieu": "", "date": "20 juin 2026", "iso": "2026-06-20", "heure": "21 h 48", "alt": "", "coord": "", "leg": "Deux heures après les photos de crête. Les fleurs du premier plan finissent par prendre exactement la couleur du ciel.", "src": "img/12-cirrus-roses.jpg", "w": 1170, "h": 1560, "cat": "flore"}, {"n": 13, "t": "La crête au-dessus des sapins", "reg": "Monts Dore", "lieu": "", "date": "20 juin 2026", "iso": "2026-06-20", "heure": "20 h 01", "alt": "", "coord": "", "leg": "Jour le plus long de l'année, vingt heures passées, et la lumière tient encore une bonne heure.", "src": "img/13-la-crete-au-dessus-des-sapins.jpg", "w": 1170, "h": 1560, "cat": "sommets"}, {"n": 14, "t": "Avant le lever", "reg": "Chaîne des Puys", "lieu": "", "date": "13 juin 2026", "iso": "2026-06-13", "heure": "05 h 38", "alt": "", "coord": "", "leg": "Cinq heures trente-huit. Une bande orange à l'horizon, et tout le reste encore dans la nuit.", "src": "img/14-avant-le-lever.jpg", "w": 877, "h": 1560, "cat": "nuages"}, {"n": 15, "t": "Le sommet, sept heures quarante", "reg": "Monts Dore", "lieu": "", "date": "1 juin 2026", "iso": "2026-06-01", "heure": "19 h 40", "alt": "", "coord": "", "leg": "Les sentiers, les escaliers et les installations vus d'aplomb, en fin de journée, quand tout le monde est reparti.", "src": "img/15-le-sommet-sept-heures-quarante.jpg", "w": 877, "h": 1560, "cat": "sommets"}, {"n": 16, "t": "Plateau et lacs", "reg": "Monts Dore", "lieu": "", "date": "23 mai 2026", "iso": "2026-05-23", "heure": "13 h 27", "alt": "1523", "coord": "45.6281° N · 2.8287° E", "leg": "Le relief s'aplatit vers le nord, et les lacs apparaissent les uns après les autres à l'horizon.", "src": "img/16-plateau-et-lacs.jpg", "w": 1560, "h": 878, "cat": "lacs"}, {"n": 17, "t": "Cratère plein d'eau", "reg": "Monts Dore", "lieu": "", "date": "23 mai 2026", "iso": "2026-05-23", "heure": "12 h 01", "alt": "1581", "coord": "45.6417° N · 2.8563° E", "leg": "Soixante-dix secondes après la précédente, presque trois cents mètres plus haut. Le vert de la forêt tombe droit dans le bleu.", "src": "img/17-cratere-plein-d-eau.jpg", "w": 1560, "h": 878, "cat": "lacs"}, {"n": 18, "t": "Le lac à la verticale", "reg": "Monts Dore", "lieu": "", "date": "23 mai 2026", "iso": "2026-05-23", "heure": "12 h 00", "alt": "1302", "coord": "45.6403° N · 2.8540° E", "leg": "Vue plongeante sur le cratère. Midi pile : l'eau est presque noire, la couronne de sapins bien nette.", "src": "img/18-le-lac-a-la-verticale.jpg", "w": 877, "h": 1560, "cat": "lacs"}, {"n": 19, "t": "Sous l'averse", "reg": "Monts Dore", "lieu": "", "date": "20 mai 2026", "iso": "2026-05-20", "heure": "19 h 29", "alt": "1504", "coord": "45.5892° N · 2.8448° E", "leg": "Le grain est passé juste au-dessus du sommet. Sept heures et demie du soir, on a fini trempés.", "src": "img/19-sous-l-averse.jpg", "w": 877, "h": 1560, "cat": "sommets"}, {"n": 20, "t": "Au ras de l'herbe", "reg": "Monts Dore", "lieu": "", "date": "20 mai 2026", "iso": "2026-05-20", "heure": "18 h 22", "alt": "", "coord": "", "leg": "Appareil posé au sol, à hauteur des fleurs. Une heure avant l'averse, les crêtes encore au soleil.", "src": "img/20-au-ras-de-l-herbe.jpg", "w": 1170, "h": 1560, "cat": "flore"}, {"n": 21, "t": "Les cônes en enfilade", "reg": "Chaîne des Puys", "lieu": "", "date": "8 mai 2026", "iso": "2026-05-08", "heure": "15 h 27", "alt": "1230", "coord": "45.8083° N · 2.9804° E", "leg": "Une demi-heure plus au sud sur la chaîne. Les puys s'alignent jusqu'à l'horizon, tous de la même famille.", "src": "img/21-les-cones-en-enfilade.jpg", "w": 1560, "h": 878, "cat": "sommets"}, {"n": 22, "t": "Cumulus sur le puy", "reg": "Chaîne des Puys", "lieu": "", "date": "8 mai 2026", "iso": "2026-05-08", "heure": "14 h 55", "alt": "1608", "coord": "45.8173° N · 2.9830° E", "leg": "Milieu d'après-midi de mai : les cumulus se forment pile au-dessus du cône et n'en bougent plus.", "src": "img/22-cumulus-sur-le-puy.jpg", "w": 877, "h": 1560, "cat": "sommets"}, {"n": 23, "t": "Face au massif", "reg": "Monts Dore", "lieu": "", "date": "25 avril 2026", "iso": "2026-04-25", "heure": "08 h 21", "alt": "1447", "coord": "45.5982° N · 2.7895° E", "leg": "Debout au bord de la barre rocheuse, les sommets d'en face encore couverts de neige fin avril.", "src": "img/23-face-au-massif.jpg", "w": 877, "h": 1560, "cat": "sommets"}, {"n": 24, "t": "Seul sur le rocher", "reg": "Monts Dore", "lieu": "", "date": "25 avril 2026", "iso": "2026-04-25", "heure": "08 h 19", "alt": "1444", "coord": "45.5981° N · 2.7896° E", "leg": "Deux minutes après la première : le drone recule pour donner l'échelle, et le personnage devient minuscule.", "src": "img/24-seul-sur-le-rocher.jpg", "w": 1560, "h": 878, "cat": "sommets"}, {"n": 25, "t": "Arête, huit heures du matin", "reg": "Monts Dore", "lieu": "", "date": "25 avril 2026", "iso": "2026-04-25", "heure": "08 h 17", "alt": "1446", "coord": "45.5980° N · 2.7897° E", "leg": "Drone à 1 446 m. Les barres rocheuses sont encore dans l'ombre, le plateau derrière est déjà éclairé.", "src": "img/25-arete-huit-heures-du-matin.jpg", "w": 877, "h": 1560, "cat": "sommets"}, {"n": 26, "t": "Pensées sauvages", "reg": "Monts Dore", "lieu": "", "date": "30 mai 2026", "iso": "2026-05-30", "heure": "06 h 41", "alt": "", "coord": "", "leg": "Six heures quarante du matin, la rosée encore là. Un mètre carré de prairie d'altitude, rien d'autre.", "src": "img/26-pensees-sauvages.jpg", "w": 1170, "h": 1560, "cat": "flore"}, {"n": 27, "t": "Le massif sous la neige", "reg": "Monts Dore", "lieu": "", "date": "22 février 2026", "iso": "2026-02-22", "heure": "07 h 18", "alt": "", "coord": "", "leg": "Sept heures du matin en février. La lumière rase teinte la neige en rose pendant une dizaine de minutes.", "src": "img/27-le-massif-sous-la-neige.jpg", "w": 1170, "h": 1560, "cat": "hiver"}, {"n": 28, "t": "Givre au lever", "reg": "Chaîne des Puys", "lieu": "", "date": "31 décembre 2025", "iso": "2025-12-31", "heure": "08 h 05", "alt": "", "coord": "", "leg": "Dernier matin de l'année. Le givre tient sur les herbes du premier plan, le puy se découpe derrière les sapins.", "src": "img/28-givre-au-lever.jpg", "w": 1170, "h": 1560, "cat": "hiver"}, {"n": 29, "t": "Aube d'hiver", "reg": "Chaîne des Puys", "lieu": "", "date": "31 décembre 2025", "iso": "2025-12-31", "heure": "08 h 01", "alt": "1121", "coord": "45.8247° N · 2.9548° E", "leg": "Huit heures du matin, 31 décembre. Les cônes en ombres chinoises sur l'orange, la neige qui reste dans les creux.", "src": "img/29-aube-d-hiver.jpg", "w": 1560, "h": 878, "cat": "hiver"}, {"n": 30, "t": "Silhouette", "reg": "Chaîne des Puys", "lieu": "", "date": "31 décembre 2025", "iso": "2025-12-31", "heure": "07 h 46", "alt": "1212", "coord": "45.8249° N · 2.9560° E", "leg": "Quinze minutes avant la précédente : il fait encore nuit au sol, seule la ligne d'horizon est allumée.", "src": "img/30-silhouette.jpg", "w": 877, "h": 1560, "cat": "hiver"}, {"n": 31, "t": "Le cratère émerge", "reg": "Chaîne des Puys", "lieu": "", "date": "", "iso": "", "heure": "", "alt": "", "coord": "", "leg": "Le cône et son voisin au-dessus d'une mer de nuages, en hiver. Date de prise de vue à retrouver.", "src": "img/31-le-cratere-emerge.jpg", "w": 1560, "h": 878, "cat": "hiver"}, {"n": 32, "t": "Le cratère sous la neige", "reg": "Chaîne des Puys", "lieu": "", "date": "", "iso": "", "heure": "", "alt": "", "coord": "", "leg": "Le cône du Pariou vu à la verticale, entièrement enneigé. Date de prise de vue à retrouver.", "src": "img/32-le-cratere-sous-la-neige.jpg", "w": 877, "h": 1560, "cat": "hiver"}];
+const CAT={automne:"Automne",flore:"Faune & flore",sommets:"Sommets",lacs:"Lacs",nuages:"Nuages",hiver:"Hiver",flore:"Flore"};
+const grid=document.getElementById('grid');
+let filter='all',order='desc',visible=P;
+
+function ncols(){return innerWidth<560?1:innerWidth<900?2:3}
+function render(){
+  visible=P.filter(p=>filter==='all'||p.cat===filter).sort((a,b)=>{const x=a.iso?a.iso+(a.heure||''):'',y=b.iso?b.iso+(b.heure||''):'';if(!x!==!y)return x?-1:1;return order==='desc'?(y.localeCompare(x)||a.n-b.n):(x.localeCompare(y)||a.n-b.n)});
+  document.getElementById('count').textContent=visible.length;
+  const n=ncols();grid.innerHTML='';
+  const cols=[...Array(n)].map(()=>{const c=document.createElement('div');c.className='col';grid.appendChild(c);return{el:c,h:0}});
+  visible.forEach((p,i)=>{
+    const a=document.createElement('a');a.className='card reveal';a.href='#';
+    a.innerHTML=`<div class="ph" style="aspect-ratio:${p.w}/${p.h}"><img loading="lazy" src="${p.src}" alt="${p.t} — ${p.lieu?p.lieu+', ':''}${p.reg}, Auvergne"></div><div class="meta"><span>${p.t}<em>${p.reg||''}</em></span><span>${p.iso?p.iso.slice(5,7)+'/'+p.iso.slice(0,4):'—'}</span></div>`;
+    a.onclick=e=>{e.preventDefault();openLb(i)};
+    const c=cols.reduce((m,c)=>c.h<m.h?c:m);c.el.appendChild(a);c.h+=p.h/p.w+.08;
+    a.querySelector('.ph').style.transitionDelay=(i%3)*0.12+'s';io.observe(a);
+  });
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+render();
+let lastN=ncols();addEventListener('resize',()=>{if(ncols()!==lastN){lastN=ncols();render()}});
+
+document.querySelectorAll('#filters button[data-f]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#filters button[data-f]').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  filter=b.dataset.f;render();
+});
+
+document.getElementById('form').addEventListener('submit',async e=>{
+  e.preventDefault();const f=e.target,out=document.getElementById('f-msg-out'),b=document.getElementById('f-send');
+  if(!f.checkValidity()){out.className='msg';out.textContent='Merci de remplir le nom, un e-mail valide et votre projet.';return}
+  const data=Object.fromEntries(new FormData(f));data._subject='Nouvelle demande de collab — '+(data.Marque||data.Nom);data._template='table';
+  b.disabled=true;out.className='msg';out.textContent='Envoi en cours…';
+  try{const r=await fetch('https://formsubmit.co/ajax/hugoprch63@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
+    const j=await r.json().catch(()=>({}));if(!r.ok||j.success==='false'||j.success===false)throw 0;
+    out.className='msg ok';out.textContent='Merci ! Votre demande est bien partie, je vous réponds rapidement.';f.reset()}
+  catch(_){out.className='msg';out.innerHTML='L\'envoi n\'a pas fonctionné. Écrivez-moi directement à <a href="mailto:hugoprch63@gmail.com" style="text-decoration:underline">hugoprch63@gmail.com</a>.'}
+  b.disabled=false});
+/* --- animations & navigation --- */
+const nav=document.querySelector('nav'),prog=document.getElementById('progress'),top_=document.getElementById('totop');
+document.getElementById('hint').onclick=()=>document.getElementById('travaux').scrollIntoView({behavior:'smooth'});
+top_.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+let lastY=scrollY;
+const aboutImg=document.querySelector('.about .ph img');
+function onScroll(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.transform='scaleX('+(h>0?y/h:0)+')';
+  top_.classList.toggle('on',y>innerHeight*0.9);
+  nav.classList.toggle('solid',y>innerHeight*0.8);
+  nav.classList.toggle('hide',y>innerHeight*0.8&&y>lastY+4&&!lb.classList.contains('open'));
+  if(y<lastY-4)nav.classList.remove('hide');lastY=y;
+  if(aboutImg){const r=aboutImg.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const p=(r.top+r.height/2-innerHeight/2)/innerHeight;aboutImg.style.transform='scale(1.15) translateY('+(p*-6)+'%)'}}}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+/* mots qui montent */
+document.querySelectorAll('.words').forEach(el=>{
+  const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){f.appendChild(document.createTextNode(w));return}const o=document.createElement('span');o.className='w';const i=document.createElement('span');i.textContent=w;o.appendChild(i);f.appendChild(o)});c.replaceWith(f)}else if(c.nodeType===1)walk(c)})};
+  walk(el);el.querySelectorAll('.w>span').forEach((s,i)=>s.style.transitionDelay=(i*0.025)+'s');io.observe(el)});
+/* compteurs */
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);const el=e.target,end=+el.dataset.count,dec=+el.dataset.dec,suf=el.dataset.suf,t0=performance.now(),D=1600;
+  const step=t=>{const k=Math.min(1,(t-t0)/D),v=end*(1-Math.pow(1-k,3));el.textContent=v.toLocaleString('fr-FR',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)}),{threshold:.6});
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+sortBtn.onclick=()=>{order=order==='desc'?'asc':'desc';sortBtn.textContent=order==='desc'?'Plus récentes ↓':'Plus anciennes ↑';render()};
+document.getElementById('mq').innerHTML=Array(2).fill(P.filter((_,i)=>i%3===0).map(p=>p.t).join('<i>✳</i>')+'<i>✳</i>').join('');
+
+/* curseur */
+const cur=document.getElementById('cursor');
+addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
+grid.addEventListener('mouseover',e=>{const on=!!e.target.closest('.card');cur.classList.toggle('on',on);grid.classList.toggle('hov',on)});
+grid.addEventListener('mouseleave',()=>{cur.classList.remove('on');grid.classList.remove('hov')});
+
+/* parallaxe */
+const fi=null;
+if(fi)addEventListener('scroll',()=>{const r=fi.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)fi.style.transform=`translateY(${(r.top/innerHeight)*-8}%)`},{passive:true});
+
+/* lightbox */
+const lb=document.getElementById('lb'),li=document.getElementById('lbImg');let cur_i=0;
+function openLb(i){cur_i=(i+visible.length)%visible.length;const p=visible[cur_i];
+  li.classList.remove('ok');li.onload=()=>li.classList.add('ok');li.src=p.src;li.alt=p.t;
+  lbT.textContent=p.t;lbLeg.textContent=p.leg;lbR.textContent=(p.lieu?p.lieu+', ':'')+p.reg;lbD.textContent=p.date||'—';lbH.textContent=p.heure||'—';lbA.textContent=p.alt?Number(p.alt).toLocaleString('fr-FR')+' m':'—';
+  lbI.textContent=String(cur_i+1).padStart(2,'0')+' / '+String(visible.length).padStart(2,'0');
+  lb.classList.add('open');cur.classList.remove('on')}
+lbClose.onclick=()=>lb.classList.remove('open');
+lbPrev.onclick=()=>openLb(cur_i-1);lbNext.onclick=()=>openLb(cur_i+1);
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')openLb(cur_i+1);if(e.key==='ArrowLeft')openLb(cur_i-1)});
+</script>
+</body>
+</html>
