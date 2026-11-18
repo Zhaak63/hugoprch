@@ -181,6 +181,10 @@ footer{border-top:1px solid var(--line);padding:100px 28px 28px}
 .foot div>*{display:block;margin-top:6px}
 .foot a:hover{color:var(--accent)}
 .bottom{display:flex;justify-content:space-between;margin-top:70px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12px}
+.soc,.foot .soc{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.soc a{width:46px;height:46px;display:grid!important;place-items:center;border:1px solid #3a3a36;border-radius:10px;color:var(--fg);transition:all .25s;margin-top:0!important}
+.soc a svg{width:20px;height:20px}
+.soc a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 /* LIGHTBOX */
 .lb{position:fixed;inset:0;z-index:90;background:#080807;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .45s}
 .lb.open{opacity:1;pointer-events:auto}
@@ -245,7 +249,7 @@ footer{border-top:1px solid var(--line);padding:100px 28px 28px}
 </nav>
 <div class="mnav" id="mnav" aria-hidden="true"><div class="mtop"><span class="logo" style="color:#ecebe6">Hugoprch<sup>®</sup></span><button class="mclose" id="mclose">Fermer ✕</button></div>
 <ul><li><a href="#travaux" data-m>Travaux<span>01</span></a></li><li><a href="carte.html" data-m>Carte des spots<span>✳</span></a></li><li><a href="#marques" data-m>Marques<span>02</span></a></li><li><a href="#apropos" data-m>À propos<span>03</span></a></li><li><a href="mediakit.html" data-m>Media kit<span>04</span></a></li><li><a href="telechargements.html" data-m>Téléchargements<span>05</span></a></li><li><a href="#contact" data-m>Contact<span>06</span></a></li></ul>
-<div class="msoc"><a href="https://www.instagram.com/hugoprch/">Instagram</a><a href="https://www.tiktok.com/@hugoprch">TikTok</a><a href="https://www.facebook.com/profile.php?id=61579980582496">Facebook</a><a href="mailto:hugoprch63@gmail.com">hugoprch63@gmail.com</a></div></div>
+<div class="msoc"><a href="https://www.instagram.com/hugoprch/">Instagram</a><a href="https://www.tiktok.com/@hugoprch">TikTok</a><a href="https://www.facebook.com/profile.php?id=61579980582496">Facebook</a><a href="https://discord.gg/7NEw5ey5zN">Discord</a><a href="mailto:hugoprch63@gmail.com">hugoprch63@gmail.com</a></div></div>
 
 <header class="hero" id="top">
   <picture><source media="(max-aspect-ratio: 4/5)" srcset="img/hero-pavin-m.jpg"><img src="img/hero-pavin.jpg" alt="Le lac Pavin en automne, les Monts Dore au fond"></picture>
@@ -334,7 +338,7 @@ footer{border-top:1px solid var(--line);padding:100px 28px 28px}
   </form>
   <div class="foot">
     <div><span class="label">Contact</span><a href="mailto:hugoprch63@gmail.com">hugoprch63@gmail.com</a></div>
-    <div><span class="label">Réseaux</span><a href="https://www.instagram.com/hugoprch/">Instagram — @hugoprch</a><a href="https://www.tiktok.com/@hugoprch">TikTok — @hugoprch</a><a href="https://www.facebook.com/profile.php?id=61579980582496">Facebook — Hugoprch</a></div>
+    <div><span class="label">Réseaux</span><div class="soc"><a href="https://www.instagram.com/hugoprch/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.tiktok.com/@hugoprch" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.3 1.7 3.9 4 4.1v3.1a7.3 7.3 0 0 1-4-1.3v6.4A6.2 6.2 0 1 1 10.4 9v3.2a3 3 0 1 0 3 3V3z"/></svg></a><a href="https://www.facebook.com/profile.php?id=61579980582496" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.9v3h2.6V21z"/></svg></a><a href="https://discord.gg/7NEw5ey5zN" target="_blank" rel="noopener" aria-label="Discord" title="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.3 5.6A16 16 0 0 0 15.4 4.4l-.5 1a14.8 14.8 0 0 0-5.8 0l-.5-1a16 16 0 0 0-3.9 1.2C2.2 9.3 1.6 13 1.9 16.6a16 16 0 0 0 4.8 2.4l1-1.6a10 10 0 0 1-1.6-.8l.4-.3a11.4 11.4 0 0 0 11 0l.4.3a10 10 0 0 1-1.6.8l1 1.6a16 16 0 0 0 4.8-2.4c.4-4.2-.7-7.9-2.8-11zM8.8 14.4c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.8.9 1.7 2c0 1.1-.8 2-1.7 2zm6.4 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.8.9 1.7 2c0 1.1-.8 2-1.7 2z"/></svg></a></div></div>
     <div><span class="label">Basé en</span><span>Auvergne, France</span></div>
     <div><span class="label">Pages</span><a href="#travaux">Travaux</a><a href="#marques">Marques</a><a href="#apropos">À propos</a><a href="telechargements.html">Téléchargements</a><a href="mediakit.html">Media kit</a></div>
   </div>
