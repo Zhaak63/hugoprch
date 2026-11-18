@@ -26,7 +26,9 @@ nav ul{display:flex;gap:26px;list-style:none;font-size:13px;text-transform:upper
 nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 #map{position:fixed;inset:0;background:#0c0c0b}
 .leaflet-container{background:#0c0c0b;font-family:inherit}
-.dark-tiles{filter:invert(1) hue-rotate(180deg) brightness(.82) contrast(.92) saturate(.25)}
+.dark-tiles{filter:brightness(.78) contrast(1.05)}
+.dark-labels{opacity:.75}
+.sat-tiles{filter:brightness(.68) saturate(.75) contrast(1.05)}
 .layer{position:fixed;right:22px;top:76px;z-index:900;background:rgba(12,12,11,.8);backdrop-filter:blur(8px);border:1px solid #444;color:var(--fg);border-radius:99px;padding:8px 16px;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .leaflet-control-attribution{background:rgba(12,12,11,.7)!important;color:#777!important;font-size:10px}
 .leaflet-control-attribution a{color:#999!important}
@@ -166,10 +168,13 @@ const SPOTS=[
  n:'<b>Un village perché sur sa butte.</b> Vu au drone, les toits se resserrent autour du donjon, avec la plaine de l\'Allier tout autour.'}
 ];
 const AUV=L.latLngBounds([[45.0,2.3],[46.2,3.6]]);
-const map=L.map('map',{zoomControl:true,attributionControl:true,minZoom:8,maxBounds:AUV.pad(.6)}).setView([45.64,2.93],9);
+const map=L.map('map',{zoomControl:true,attributionControl:true,minZoom:8,maxBounds:AUV.pad(.6),maxZoom:16}).setView([45.64,2.93],9);
 map.zoomControl.setPosition('bottomright');
-const dark=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,subdomains:'abc',className:'dark-tiles',attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'});
-const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,attribution:'Imagerie © Esri'});
+const E='https://server.arcgisonline.com/ArcGIS/rest/services/';
+const dark=L.layerGroup([
+ L.tileLayer(E+'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,className:'dark-tiles',attribution:'© Esri, HERE, Garmin, © OpenStreetMap'}),
+ L.tileLayer(E+'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,className:'dark-labels'})]);
+const sat=L.tileLayer(E+'World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,className:'sat-tiles',attribution:'Imagerie © Esri'});
 dark.addTo(map);
 const LB=document.getElementById('layerBtn');LB.onclick=()=>{if(map.hasLayer(dark)){map.removeLayer(dark);sat.addTo(map);LB.textContent='Plan'}else{map.removeLayer(sat);dark.addTo(map);LB.textContent='Satellite'}};
 const markers={};let active='all',sel=null;
