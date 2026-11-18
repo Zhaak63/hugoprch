@@ -29,6 +29,8 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 .dark-tiles{filter:brightness(.78) contrast(1.05)}
 .dark-labels{opacity:.75}
 .sat-tiles{filter:brightness(.8) saturate(.85) contrast(1.05)}
+.sat-roads{opacity:.55}
+.sat-labels{opacity:.9}
 .layer{position:fixed;right:22px;top:76px;z-index:900;background:rgba(12,12,11,.8);backdrop-filter:blur(8px);border:1px solid #444;color:var(--fg);border-radius:99px;padding:8px 16px;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .leaflet-control-attribution{background:rgba(12,12,11,.7)!important;color:#777!important;font-size:10px}
 .leaflet-control-attribution a{color:#999!important}
@@ -174,7 +176,10 @@ const E='https://server.arcgisonline.com/ArcGIS/rest/services/';
 const dark=L.layerGroup([
  L.tileLayer(E+'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,className:'dark-tiles',attribution:'© Esri, HERE, Garmin, © OpenStreetMap'}),
  L.tileLayer(E+'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,className:'dark-labels'})]);
-const sat=L.tileLayer(E+'World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,className:'sat-tiles',attribution:'Imagerie © Esri'});
+const sat=L.layerGroup([
+ L.tileLayer(E+'World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,className:'sat-tiles',attribution:'Imagerie © Esri'}),
+ L.tileLayer(E+'Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,className:'sat-roads'}),
+ L.tileLayer(E+'Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,className:'sat-labels'})]);
 sat.addTo(map);
 const LB=document.getElementById('layerBtn');LB.onclick=()=>{if(map.hasLayer(sat)){map.removeLayer(sat);dark.addTo(map);LB.textContent='Satellite'}else{map.removeLayer(dark);sat.addTo(map);LB.textContent='Plan'}};
 const markers={};let active='all',sel=null;
