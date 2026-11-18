@@ -44,6 +44,8 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 .filters button:hover{border-color:#555;color:var(--fg)}
 .filters button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .pin{width:38px;height:38px;border-radius:50%;background:#0c0c0b;border:2px solid var(--accent);display:grid;place-items:center;color:var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.6);transition:transform .25s}
+.pin.pulse{animation:pulse 1.4s ease-out 2}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(217,199,163,.75),0 6px 18px rgba(0,0,0,.6)}100%{box-shadow:0 0 0 18px rgba(217,199,163,0),0 6px 18px rgba(0,0,0,.6)}}
 .pin svg{width:19px;height:19px}
 .pin:hover,.pin.sel{transform:scale(1.18);background:var(--accent);color:#0c0c0b}
 .leaflet-tooltip.tt{background:#0c0c0b;color:var(--fg);border:1px solid #2e2e2b;border-radius:6px;font-size:13px;padding:5px 10px;box-shadow:none}
@@ -270,11 +272,15 @@ SPOTS.forEach(s=>{
 const fit=()=>{map.invalidateSize();map.fitBounds(L.latLngBounds(SPOTS.map(s=>s.ll)),{padding:innerWidth<760?[30,30]:[80,80],maxZoom:11})};fit();setTimeout(fit,300);addEventListener('load',fit);
 const tagsUsed=[...new Set(SPOTS.flatMap(s=>s.tags))];
 const F=document.getElementById('filters');
-const mkBtn=(k,label,svg)=>{const b=document.createElement('button');b.innerHTML=(svg||'')+label;b.dataset.k=k;if(k==='all')b.classList.add('on');b.onclick=()=>{active=k;F.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));applyFilter()};F.appendChild(b)};
+const mkBtn=(k,label,svg)=>{const b=document.createElement('button');b.innerHTML=(svg||'')+label;b.dataset.k=k;if(k==='all')b.classList.add('on');b.onclick=()=>{active=k;F.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));applyFilter();focusVisible()};F.appendChild(b)};
 mkBtn('all','Tous les spots','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/></svg>');
 ['lever','coucher','lac','volcan','cascade','nuages','hiver','automne','village','chateau','animaux'].filter(k=>tagsUsed.includes(k)).forEach(k=>mkBtn(k,L_[k],I[k]));
 function applyFilter(){let n=0;SPOTS.forEach(s=>{const ok=active==='all'||s.tags.includes(active);const m=markers[s.id];if(ok){if(!map.hasLayer(m))m.addTo(map);n++}else map.removeLayer(m)});document.getElementById('count').textContent=n+' spot'+(n>1?'s':'')+' · clique sur un point';}
 applyFilter();
+function focusVisible(){const vis=SPOTS.filter(s=>active==='all'||s.tags.includes(active));if(!vis.length)return;
+ const pad=innerWidth<760?[60,60]:[120,120];
+ if(vis.length===1)map.flyTo(vis[0].ll,12,{duration:.9});else map.flyToBounds(L.latLngBounds(vis.map(s=>s.ll)),{padding:pad,maxZoom:12,duration:.9});
+ setTimeout(()=>{document.querySelectorAll('.pin').forEach(p=>{if(vis.some(s=>s.id===p.dataset.id)){p.classList.remove('pulse');void p.offsetWidth;p.classList.add('pulse')}})},950);}
 const P=document.getElementById('panel');
 function openSpot(s){
  sel=s;document.querySelectorAll('.pin').forEach(p=>p.classList.toggle('sel',p.dataset.id===s.id));
