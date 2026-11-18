@@ -26,6 +26,8 @@ nav ul{display:flex;gap:26px;list-style:none;font-size:13px;text-transform:upper
 nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 #map{position:fixed;inset:0;background:#0c0c0b}
 .leaflet-container{background:#0c0c0b;font-family:inherit}
+.dark-tiles{filter:invert(1) hue-rotate(180deg) brightness(.82) contrast(.92) saturate(.25)}
+.layer{position:fixed;right:22px;top:76px;z-index:900;background:rgba(12,12,11,.8);backdrop-filter:blur(8px);border:1px solid #444;color:var(--fg);border-radius:99px;padding:8px 16px;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .leaflet-control-attribution{background:rgba(12,12,11,.7)!important;color:#777!important;font-size:10px}
 .leaflet-control-attribution a{color:#999!important}
 .leaflet-control-zoom a{background:#141413!important;color:var(--fg)!important;border-color:#2a2a27!important}
@@ -33,7 +35,7 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 .head .lb{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .head h1{font-size:clamp(36px,4.6vw,64px);font-weight:500;letter-spacing:-.045em;line-height:.95;margin-top:8px}
 .filters{position:fixed;left:28px;top:clamp(210px,24vh,250px);z-index:900;display:flex;flex-direction:column;gap:6px}
-.filters button{display:flex;align-items:center;gap:9px;background:rgba(12,12,11,.78);backdrop-filter:blur(8px);border:1px solid #2e2e2b;color:#c9c8c2;font:inherit;font-size:13px;padding:7px 14px 7px 9px;border-radius:99px;cursor:pointer;transition:all .25s;width:max-content}
+.filters button{display:flex;align-items:center;gap:9px;background:rgba(12,12,11,.78);backdrop-filter:blur(8px);border:1px solid #2e2e2b;color:#c9c8c2;font:inherit;font-size:13px;padding:7px 14px 7px 9px;border-radius:99px;cursor:pointer;transition:all .25s;width:max-content;white-space:nowrap;flex:none}
 .filters button svg{width:18px;height:18px;flex:none}
 .filters button:hover{border-color:#555;color:var(--fg)}
 .filters button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
@@ -71,6 +73,7 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 @media (max-width:760px){
  nav{padding:14px 18px}nav ul{gap:14px;font-size:11px}nav ul .m-hide{display:none}
  .head{left:18px;top:62px}.head h1{font-size:34px}
+ .layer{top:auto;bottom:84px;right:14px}
  .filters{left:0;right:0;top:auto;bottom:0;flex-direction:row;overflow-x:auto;padding:12px 14px 18px;background:linear-gradient(0deg,rgba(12,12,11,.95),rgba(12,12,11,0))}
  .count{display:none}
  .panel{top:auto;height:82vh;border-left:0;border-top:1px solid var(--line);border-radius:16px 16px 0 0;transform:translateY(100%)}
@@ -85,6 +88,7 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 <div id="map"></div>
 <div class="head"><div class="lb">Mes spots en Auvergne</div><h1>La carte <span class="serif">des spots.</span></h1></div>
 <div class="filters" id="filters"></div>
+<button class="layer" id="layerBtn">Satellite</button>
 <div class="count" id="count"></div>
 <aside class="panel" id="panel" aria-hidden="true">
   <button class="pclose" id="pclose">Fermer ✕</button>
@@ -161,16 +165,20 @@ const SPOTS=[
  f:[['Ma sortie','Octobre 2026'],['Point fort','Le village perché vu du ciel'],['Label','Un des plus beaux villages de France']],
  n:'<b>Un village perché sur sa butte.</b> Vu au drone, les toits se resserrent autour du donjon, avec la plaine de l\'Allier tout autour.'}
 ];
-const map=L.map('map',{zoomControl:true,attributionControl:true}).setView([45.66,2.93],10);
+const AUV=L.latLngBounds([[45.0,2.3],[46.2,3.6]]);
+const map=L.map('map',{zoomControl:true,attributionControl:true,minZoom:8,maxBounds:AUV.pad(.6)}).setView([45.64,2.93],9);
 map.zoomControl.setPosition('bottomright');
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:18,subdomains:'abcd',attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/">CARTO</a>'}).addTo(map);
+const dark=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,subdomains:'abc',className:'dark-tiles',attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'});
+const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,attribution:'Imagerie © Esri'});
+dark.addTo(map);
+const LB=document.getElementById('layerBtn');LB.onclick=()=>{if(map.hasLayer(dark)){map.removeLayer(dark);sat.addTo(map);LB.textContent='Plan'}else{map.removeLayer(sat);dark.addTo(map);LB.textContent='Satellite'}};
 const markers={};let active='all',sel=null;
 SPOTS.forEach(s=>{
  const icon=L.divIcon({className:'',html:`<div class="pin" data-id="${s.id}">${I[s.main]}</div>`,iconSize:[38,38],iconAnchor:[19,19]});
  const mk=L.marker(s.ll,{icon,riseOnHover:true}).addTo(map).bindTooltip(s.t,{className:'tt',direction:'top',offset:[0,-20]});
  mk.on('click',()=>openSpot(s));markers[s.id]=mk;
 });
-map.fitBounds(L.latLngBounds(SPOTS.map(s=>s.ll)).pad(.25));
+const fit=()=>{map.invalidateSize();map.fitBounds(L.latLngBounds(SPOTS.map(s=>s.ll)),{padding:innerWidth<760?[30,30]:[80,80],maxZoom:11})};fit();setTimeout(fit,300);addEventListener('load',fit);
 const tagsUsed=[...new Set(SPOTS.flatMap(s=>s.tags))];
 const F=document.getElementById('filters');
 const mkBtn=(k,label,svg)=>{const b=document.createElement('button');b.innerHTML=(svg||'')+label;b.dataset.k=k;if(k==='all')b.classList.add('on');b.onclick=()=>{active=k;F.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));applyFilter()};F.appendChild(b)};
