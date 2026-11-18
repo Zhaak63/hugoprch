@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carte des spots — Hugoprch, photographe en Auvergne</title>
+<meta name="description" content="La carte de mes spots photo en Auvergne : lacs, volcans, cascades, levers et couchers de soleil, avec mes photos et mes conseils pour chaque lieu.">
+<link rel="canonical" href="https://www.hugoprch.fr/carte.html">
+<meta property="og:type" content="website"><meta property="og:title" content="Carte des spots photo — Hugoprch">
+<meta property="og:description" content="Mes spots photo en Auvergne, avec photos et conseils : lever, coucher, lacs, volcans, cascades.">
+<meta property="og:url" content="https://www.hugoprch.fr/carte.html"><meta property="og:image" content="https://www.hugoprch.fr/img/og.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/email/portrait.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0b;--fg:#ecebe6;--mute:#8a8983;--line:#262624;--accent:#d9c7a3}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:"Inter Tight",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+a{color:inherit;text-decoration:none}
+.serif{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--accent)}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:linear-gradient(180deg,rgba(12,12,11,.92),rgba(12,12,11,0))}
+.logo{font-weight:600;letter-spacing:-.02em;font-size:18px}.logo sup{font-size:10px;font-weight:400}
+nav ul{display:flex;gap:26px;list-style:none;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
+#map{position:fixed;inset:0;background:#0c0c0b}
+.leaflet-container{background:#0c0c0b;font-family:inherit}
+.leaflet-control-attribution{background:rgba(12,12,11,.7)!important;color:#777!important;font-size:10px}
+.leaflet-control-attribution a{color:#999!important}
+.leaflet-control-zoom a{background:#141413!important;color:var(--fg)!important;border-color:#2a2a27!important}
+.head{position:fixed;left:28px;top:84px;z-index:900;max-width:420px;pointer-events:none}
+.head .lb{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.head h1{font-size:clamp(36px,4.6vw,64px);font-weight:500;letter-spacing:-.045em;line-height:.95;margin-top:8px}
+.filters{position:fixed;left:28px;top:clamp(210px,24vh,250px);z-index:900;display:flex;flex-direction:column;gap:6px}
+.filters button{display:flex;align-items:center;gap:9px;background:rgba(12,12,11,.78);backdrop-filter:blur(8px);border:1px solid #2e2e2b;color:#c9c8c2;font:inherit;font-size:13px;padding:7px 14px 7px 9px;border-radius:99px;cursor:pointer;transition:all .25s;width:max-content}
+.filters button svg{width:18px;height:18px;flex:none}
+.filters button:hover{border-color:#555;color:var(--fg)}
+.filters button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.pin{width:38px;height:38px;border-radius:50%;background:#0c0c0b;border:2px solid var(--accent);display:grid;place-items:center;color:var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.6);transition:transform .25s}
+.pin svg{width:19px;height:19px}
+.pin:hover,.pin.sel{transform:scale(1.18);background:var(--accent);color:#0c0c0b}
+.leaflet-tooltip.tt{background:#0c0c0b;color:var(--fg);border:1px solid #2e2e2b;border-radius:6px;font-size:13px;padding:5px 10px;box-shadow:none}
+.leaflet-tooltip.tt::before{display:none}
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:1100;background:#0c0c0b;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .55s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.panel.open{transform:none}
+.pclose{position:absolute;top:16px;right:16px;z-index:3;background:rgba(12,12,11,.7);backdrop-filter:blur(6px);border:1px solid #444;color:var(--fg);border-radius:99px;padding:8px 14px;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.pimg{position:relative;height:42vh;min-height:240px;flex:none;overflow:hidden;background:#151513}
+.pimg img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s}
+.thumbs{position:absolute;left:16px;bottom:14px;display:flex;gap:6px}
+.thumbs button{width:44px;height:44px;border-radius:5px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:none;opacity:.7}
+.thumbs button.on{border-color:var(--accent);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.pbody{padding:24px 26px 30px;overflow-y:auto;flex:1}
+.pbody .lb{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.pbody h2{font-size:38px;font-weight:500;letter-spacing:-.04em;line-height:1;margin:8px 0 6px}
+.pbody .sub{font-size:14px;color:var(--mute)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 20px}
+.tags span{display:flex;align-items:center;gap:7px;border:1px solid #2e2e2b;border-radius:99px;padding:6px 12px 6px 8px;font-size:12.5px;color:#d6d5cf}
+.tags svg{width:16px;height:16px;color:var(--accent)}
+.facts{border-top:1px solid var(--line)}
+.facts div{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.facts div span:first-child{color:var(--mute)}
+.facts div span:last-child{text-align:right}
+.note{margin-top:20px;font-size:15px;line-height:1.55;color:#cfcdc6}
+.note b{color:var(--fg);font-weight:500}
+.go{display:inline-flex;margin-top:22px;gap:10px;flex-wrap:wrap}
+.go a{border:1px solid #444;border-radius:99px;padding:10px 16px;font-size:13px}
+.go a:first-child{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.count{position:fixed;left:28px;bottom:24px;z-index:900;font-size:12px;color:var(--mute);letter-spacing:.06em}
+@media (max-width:760px){
+ nav{padding:14px 18px}nav ul{gap:14px;font-size:11px}nav ul .m-hide{display:none}
+ .head{left:18px;top:62px}.head h1{font-size:34px}
+ .filters{left:0;right:0;top:auto;bottom:0;flex-direction:row;overflow-x:auto;padding:12px 14px 18px;background:linear-gradient(0deg,rgba(12,12,11,.95),rgba(12,12,11,0))}
+ .count{display:none}
+ .panel{top:auto;height:82vh;border-left:0;border-top:1px solid var(--line);border-radius:16px 16px 0 0;transform:translateY(100%)}
+ .pimg{height:32vh}
+ .leaflet-control-zoom{display:none}
+}
+</style>
+</head>
+<body>
+<nav><a href="index.html" class="logo">Hugoprch<sup>®</sup></a>
+<ul><li class="m-hide"><a href="index.html#travaux">Travaux</a></li><li><a href="carte.html" class="on">Carte</a></li><li class="m-hide"><a href="telechargements.html">Téléchargements</a></li><li><a href="index.html#contact">Contact</a></li></ul></nav>
+<div id="map"></div>
+<div class="head"><div class="lb">Mes spots en Auvergne</div><h1>La carte <span class="serif">des spots.</span></h1></div>
+<div class="filters" id="filters"></div>
+<div class="count" id="count"></div>
+<aside class="panel" id="panel" aria-hidden="true">
+  <button class="pclose" id="pclose">Fermer ✕</button>
+  <div class="pimg"><img id="pImg" alt=""><div class="thumbs" id="pThumbs"></div></div>
+  <div class="pbody">
+    <div class="lb" id="pMassif"></div>
+    <h2 id="pTitle"></h2>
+    <div class="sub" id="pSub"></div>
+    <div class="tags" id="pTags"></div>
+    <div class="facts" id="pFacts"></div>
+    <p class="note" id="pNote"></p>
+    <div class="go"><a id="pMaps" target="_blank" rel="noopener">Itinéraire ↗</a><a href="index.html#travaux">Toutes les photos</a></div>
+  </div>
+</aside>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const I={
+lever:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 18h18M6 18a6 6 0 0 1 12 0M12 4v4M5 10l2 2M19 10l-2 2M12 4l-2 2M12 4l2 2"/></svg>',
+coucher:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 18h18M6 18a6 6 0 0 1 12 0M12 4v4M5 10l2 2M19 10l-2 2M10 6l2 2 2-2"/></svg>',
+lac:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><ellipse cx="12" cy="14" rx="9" ry="5"/><path d="M8 14q2-1.5 4 0t4 0"/></svg>',
+volcan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20l7-10q1-1 2 0l1 1 1-1q1-1 2 0l7 10z"/><path d="M11 7q-1-1.5 0-3M14 7q1-1.5 0-3"/></svg>',
+cascade:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 4h16M9 4v10M12 4v13M15 4v10"/><path d="M5 20q3-2 7 0t7 0"/></svg>',
+nuages:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M7 15a4 4 0 0 1 .5-8A5 5 0 0 1 17 8a3.5 3.5 0 0 1 0 7z"/><path d="M3 19h18"/></svg>',
+hiver:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>',
+automne:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19C5 10 10 5 20 4c-1 10-6 15-15 15z"/><path d="M5 19l8-8"/></svg>',
+drone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9.5 9.5 6 6M14.5 9.5 18 6M9.5 14.5 6 18M14.5 14.5 18 18"/><circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/></svg>',
+sommet:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20 10 7l4 6 2-3 6 10z"/></svg>',
+village:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V11l5-4 5 4v9M13 20v-6l4-3 4 3v6M2 20h20M7 20v-4h2v4"/></svg>'};
+const L_={lever:'Lever de soleil',coucher:'Coucher de soleil',lac:'Lac',volcan:'Volcan',cascade:'Cascade',nuages:'Mer de nuages',hiver:'Hiver',automne:'Automne',drone:'Vue drone',sommet:'Sommet & crête',village:'Village'};
+const SPOTS=[
+{id:'puy-de-dome',t:'Puy de Dôme',m:'Chaîne des Puys',ll:[45.7722,2.9643],alt:'1 465 m',main:'volcan',tags:['volcan','lever','coucher','drone'],
+ ph:['img/pdd-01.jpg','img/pdd-02.jpg','img/05-le-puy-de-dome-d-en-haut.jpg'],
+ f:[['Mes sorties','8 août 2026 (soir) · 14 nov. 2026 (matin)'],['Meilleure lumière','Lever et coucher'],['Accès','Chemin des Muletiers ou train panoramique']],
+ n:'<b>Le spot incontournable.</b> Le matin, le soleil rasant allume le sommet pendant que la plaine reste givrée. Le soir, en été, on voit l\'antenne, le temple de Mercure et les lacets jusqu\'à 21 h passées.'},
+{id:'pavin',t:'Lac Pavin',m:'Monts Dore',ll:[45.4955,2.8890],alt:'1 197 m',main:'lac',tags:['lac','lever','automne','drone'],
+ ph:['img/pavin-02.jpg','img/01-pavin-une-heure-plus-tard.jpg','img/pavin-12.jpg','img/pavin-01.jpg'],
+ f:[['Mes sorties','18 août 2026 (matin) · 6 nov. 2026'],['Meilleure période','Début novembre pour les hêtres'],['Accès','Parking au bord du lac, tour du lac facile']],
+ n:'<b>Mon lac préféré en automne.</b> Le cratère parfaitement rond se couvre de hêtres orange début novembre. Le matin, une fine brume reste accrochée à la rive d\'en face.'},
+{id:'serviere',t:'Lac de Servière',m:'Monts Dore',ll:[45.6420,2.8560],alt:'1 202 m',main:'lac',tags:['lac','drone','automne'],
+ ph:['img/serviere-02.jpg','img/serviere-01.jpg','img/serviere-03.jpg','img/17-cratere-plein-d-eau.jpg'],
+ f:[['Mes sorties','23 mai 2026 · 9 nov. 2026'],['Point fort','Le lac vu d\'en haut'],['À voir','La Chaîne des Puys à l\'horizon']],
+ n:'<b>Un œil sombre au milieu des sapins.</b> Vu du ciel, l\'eau passe du turquoise au bleu nuit, et la Chaîne des Puys s\'aligne au loin.'},
+{id:'cezallier',t:'Mer de nuages du Cézallier',m:'Cézallier',ll:[45.4531,2.8373],alt:'≈ 1 550 m (drone)',main:'nuages',tags:['nuages','lever','drone'],
+ ph:['img/04-mer-de-nuages-6-h-35.jpg','img/03-un-sommet-au-dessus-de-la-couche.jpg'],
+ f:[['Ma sortie','18 août 2026, 6 h 35'],['Meilleure lumière','Lever de soleil'],['Condition','Nuit fraîche et claire, nuages bas au matin']],
+ n:'<b>Au-dessus de la couche.</b> Le drone perce les nuages vers 1 550 m et le ciel vire au rose quelques minutes après. En dessous, tout est resté gris jusqu\'à midi.'},
+{id:'pariou',t:'Puy de Pariou',m:'Chaîne des Puys',ll:[45.7965,2.9696],alt:'1 209 m',main:'volcan',tags:['volcan','hiver','drone','nuages'],
+ ph:['img/31-le-cratere-emerge.jpg','img/32-le-cratere-sous-la-neige.jpg'],
+ f:[['Meilleure période','Hiver, après une chute de neige'],['Point fort','Le cratère vu d\'en haut'],['Accès','Sentier depuis le col des Goules']],
+ n:'<b>Le cratère presque parfait.</b> Sous la neige, il dessine un cercle blanc vu à la verticale. Par temps de mer de nuages, il émerge avec son voisin.'},
+{id:'puys-nord',t:'Aube d\'hiver sur les Puys',m:'Chaîne des Puys (nord)',ll:[45.8248,2.9554],alt:'≈ 1 200 m (drone)',main:'lever',tags:['lever','hiver','volcan','drone'],
+ ph:['img/29-aube-d-hiver.jpg','img/30-silhouette.jpg','img/28-givre-au-lever.jpg'],
+ f:[['Ma sortie','31 décembre 2025, 7 h 46 – 8 h 05'],['Meilleure lumière','Aube, avant le lever'],['À voir','Les cônes en ombres chinoises']],
+ n:'<b>Le dernier matin de l\'année.</b> Les volcans se découpent en silhouettes sur l\'orange, la neige reste dans les creux et le givre tient sur les herbes.'},
+{id:'cones',t:'Les cônes en enfilade',m:'Chaîne des Puys',ll:[45.8128,2.9817],alt:'≈ 1 230 m (drone)',main:'volcan',tags:['volcan','drone'],
+ ph:['img/21-les-cones-en-enfilade.jpg','img/22-cumulus-sur-le-puy.jpg'],
+ f:[['Ma sortie','8 mai 2026, après-midi'],['Point fort','L\'alignement des puys'],['Astuce','Les cumulus se forment au-dessus des cônes l\'après-midi']],
+ n:'<b>Tous de la même famille.</b> D\'ici, les puys s\'alignent jusqu\'à l\'horizon.'},
+{id:'barre',t:'Barre rocheuse des Monts Dore',m:'Monts Dore',ll:[45.5981,2.7896],alt:'≈ 1 445 m',main:'sommet',tags:['sommet','lever','drone'],
+ ph:['img/23-face-au-massif.jpg','img/24-seul-sur-le-rocher.jpg','img/25-arete-huit-heures-du-matin.jpg'],
+ f:[['Ma sortie','25 avril 2026, 8 h 17'],['Meilleure lumière','Matin'],['À voir','Les sommets encore enneigés en avril']],
+ n:'<b>Face au massif.</b> Debout au bord de la barre rocheuse, avec les sommets d\'en face encore sous la neige fin avril.'},
+{id:'cretes',t:'Crêtes au-dessus du Mont-Dore',m:'Monts Dore',ll:[45.5892,2.8448],alt:'≈ 1 500 m',main:'coucher',tags:['coucher','sommet','drone'],
+ ph:['img/19-sous-l-averse.jpg','img/20-au-ras-de-l-herbe.jpg'],
+ f:[['Ma sortie','20 mai 2026, 18 h 22 – 19 h 29'],['Meilleure lumière','Fin de journée'],['À voir','Fleurs d\'altitude au printemps']],
+ n:'<b>Entre averse et soleil.</b> Les crêtes restent au soleil en fin de journée, avec les fleurs au premier plan.'},
+{id:'cascade',t:'Grande Cascade du Mont-Dore',m:'Monts Dore',ll:[45.5603,2.8167],alt:'≈ 1 250 m',main:'cascade',tags:['cascade'],
+ ph:['dl/th-hugoprch-21.jpg'],
+ f:[['Ma sortie','21 mars 2026'],['Hauteur de chute','Une trentaine de mètres'],['Accès','Sentier depuis Le Mont-Dore']],
+ n:'<b>La plus haute cascade du massif.</b> On peut passer juste derrière le rideau d\'eau, au pied de la falaise.'},
+{id:'montpeyroux',t:'Montpeyroux',m:'Val d\'Allier',ll:[45.6236,3.2008],alt:'≈ 450 m',main:'village',tags:['village','drone'],
+ ph:['dl/th-hugoprch-11.jpg','dl/th-hugoprch-12.jpg'],
+ f:[['Ma sortie','Octobre 2026'],['Point fort','Le village perché vu du ciel'],['Label','Un des plus beaux villages de France']],
+ n:'<b>Un village perché sur sa butte.</b> Vu au drone, les toits se resserrent autour du donjon, avec la plaine de l\'Allier tout autour.'}
+];
+const map=L.map('map',{zoomControl:true,attributionControl:true}).setView([45.66,2.93],10);
+map.zoomControl.setPosition('bottomright');
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:18,subdomains:'abcd',attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/">CARTO</a>'}).addTo(map);
+const markers={};let active='all',sel=null;
+SPOTS.forEach(s=>{
+ const icon=L.divIcon({className:'',html:`<div class="pin" data-id="${s.id}">${I[s.main]}</div>`,iconSize:[38,38],iconAnchor:[19,19]});
+ const mk=L.marker(s.ll,{icon,riseOnHover:true}).addTo(map).bindTooltip(s.t,{className:'tt',direction:'top',offset:[0,-20]});
+ mk.on('click',()=>openSpot(s));markers[s.id]=mk;
+});
+map.fitBounds(L.latLngBounds(SPOTS.map(s=>s.ll)).pad(.25));
+const tagsUsed=[...new Set(SPOTS.flatMap(s=>s.tags))];
+const F=document.getElementById('filters');
+const mkBtn=(k,label,svg)=>{const b=document.createElement('button');b.innerHTML=(svg||'')+label;b.dataset.k=k;if(k==='all')b.classList.add('on');b.onclick=()=>{active=k;F.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));applyFilter()};F.appendChild(b)};
+mkBtn('all','Tous les spots','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/></svg>');
+['lever','coucher','lac','volcan','cascade','nuages','hiver','automne','village'].filter(k=>tagsUsed.includes(k)).forEach(k=>mkBtn(k,L_[k],I[k]));
+function applyFilter(){let n=0;SPOTS.forEach(s=>{const ok=active==='all'||s.tags.includes(active);const m=markers[s.id];if(ok){if(!map.hasLayer(m))m.addTo(map);n++}else map.removeLayer(m)});document.getElementById('count').textContent=n+' spot'+(n>1?'s':'')+' · clique sur un point';}
+applyFilter();
+const P=document.getElementById('panel');
+function openSpot(s){
+ sel=s;document.querySelectorAll('.pin').forEach(p=>p.classList.toggle('sel',p.dataset.id===s.id));
+ const img=document.getElementById('pImg');img.src=s.ph[0];img.alt=s.t;
+ const th=document.getElementById('pThumbs');th.innerHTML='';
+ if(s.ph.length>1)s.ph.forEach((src,i)=>{const b=document.createElement('button');if(!i)b.classList.add('on');b.innerHTML=`<img src="${src}" alt="">`;b.onclick=()=>{img.src=src;th.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))};th.appendChild(b)});
+ pMassif.textContent=s.m;pTitle.textContent=s.t;pSub.textContent='Altitude '+s.alt;
+ pTags.innerHTML=s.tags.map(t=>`<span>${I[t]}${L_[t]}</span>`).join('');
+ pFacts.innerHTML=s.f.map(([a,b])=>`<div><span>${a}</span><span>${b}</span></div>`).join('');
+ pNote.innerHTML=s.n;
+ pMaps.href=`https://www.google.com/maps/dir/?api=1&destination=${s.ll[0]},${s.ll[1]}`;
+ P.classList.add('open');P.setAttribute('aria-hidden','false');
+ map.flyTo(s.ll,Math.max(map.getZoom(),11),{duration:.9});
+ history.replaceState(null,'','#'+s.id);
+}
+function closeSpot(){P.classList.remove('open');P.setAttribute('aria-hidden','true');document.querySelectorAll('.pin').forEach(p=>p.classList.remove('sel'));history.replaceState(null,'',location.pathname)}
+pclose.onclick=closeSpot;addEventListener('keydown',e=>{if(e.key==='Escape')closeSpot()});
+const h=location.hash.slice(1);const start=SPOTS.find(s=>s.id===h);if(start)setTimeout(()=>openSpot(start),400);
+</script>
+</body>
+</html>
