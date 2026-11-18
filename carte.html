@@ -28,7 +28,7 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 .leaflet-container{background:#0c0c0b;font-family:inherit}
 .dark-tiles{filter:brightness(.78) contrast(1.05)}
 .dark-labels{opacity:.75}
-.sat-tiles{filter:brightness(.68) saturate(.75) contrast(1.05)}
+.sat-tiles{filter:brightness(.8) saturate(.85) contrast(1.05)}
 .layer{position:fixed;right:22px;top:76px;z-index:900;background:rgba(12,12,11,.8);backdrop-filter:blur(8px);border:1px solid #444;color:var(--fg);border-radius:99px;padding:8px 16px;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .leaflet-control-attribution{background:rgba(12,12,11,.7)!important;color:#777!important;font-size:10px}
 .leaflet-control-attribution a{color:#999!important}
@@ -90,7 +90,7 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 <div id="map"></div>
 <div class="head"><div class="lb">Mes spots en Auvergne</div><h1>La carte <span class="serif">des spots.</span></h1></div>
 <div class="filters" id="filters"></div>
-<button class="layer" id="layerBtn">Satellite</button>
+<button class="layer" id="layerBtn">Plan</button>
 <div class="count" id="count"></div>
 <aside class="panel" id="panel" aria-hidden="true">
   <button class="pclose" id="pclose">Fermer ✕</button>
@@ -175,8 +175,8 @@ const dark=L.layerGroup([
  L.tileLayer(E+'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,className:'dark-tiles',attribution:'© Esri, HERE, Garmin, © OpenStreetMap'}),
  L.tileLayer(E+'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,className:'dark-labels'})]);
 const sat=L.tileLayer(E+'World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,className:'sat-tiles',attribution:'Imagerie © Esri'});
-dark.addTo(map);
-const LB=document.getElementById('layerBtn');LB.onclick=()=>{if(map.hasLayer(dark)){map.removeLayer(dark);sat.addTo(map);LB.textContent='Plan'}else{map.removeLayer(sat);dark.addTo(map);LB.textContent='Satellite'}};
+sat.addTo(map);
+const LB=document.getElementById('layerBtn');LB.onclick=()=>{if(map.hasLayer(sat)){map.removeLayer(sat);dark.addTo(map);LB.textContent='Satellite'}else{map.removeLayer(dark);sat.addTo(map);LB.textContent='Plan'}};
 const markers={};let active='all',sel=null;
 SPOTS.forEach(s=>{
  const icon=L.divIcon({className:'',html:`<div class="pin" data-id="${s.id}">${I[s.main]}</div>`,iconSize:[38,38],iconAnchor:[19,19]});
