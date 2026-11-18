@@ -28,7 +28,7 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 .leaflet-container{background:#0c0c0b;font-family:inherit}
 .dark-tiles{filter:brightness(.78) contrast(1.05)}
 .dark-labels{opacity:.75}
-.sat-tiles{filter:brightness(.8) saturate(.85) contrast(1.05)}
+.sat-tiles{filter:brightness(.72) saturate(.55) contrast(1.02)}
 .sat-roads{opacity:.55}
 .sat-labels{opacity:.9}
 .layer{position:fixed;right:22px;top:76px;z-index:900;background:rgba(12,12,11,.8);backdrop-filter:blur(8px);border:1px solid #444;color:var(--fg);border-radius:99px;padding:8px 16px;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
@@ -87,11 +87,11 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
 .pc .v{font-size:16px;font-weight:500;margin-top:7px;letter-spacing:-.01em}
 .pc .s{font-size:12.5px;color:var(--mute);margin-top:3px;line-height:1.35}
 .badge{display:inline-block;font-size:12px;font-weight:500;padding:3px 10px;border-radius:99px;margin-top:7px}
-.badge.free{background:rgba(120,190,120,.15);color:#9fd49b;border:1px solid rgba(120,190,120,.35)}
-.badge.pay{background:rgba(230,150,90,.14);color:#f0b183;border:1px solid rgba(230,150,90,.35)}
+.badge.free{background:rgba(217,199,163,.1);color:var(--accent);border:1px solid rgba(217,199,163,.35)}
+.badge.pay{background:transparent;color:#cfcdc6;border:1px solid #4a4a45}
 .badge.na{background:#1c1c1a;color:#cfcdc6;border:1px solid #333}
 .lvl{display:flex;gap:4px;margin-top:9px}.lvl i{height:6px;flex:1;border-radius:3px;background:#2a2a27}.lvl i.on{background:var(--accent)}
-.warn{margin-top:10px;border:1px solid rgba(230,120,90,.4);background:rgba(230,120,90,.1);color:#f2b39d;border-radius:10px;padding:11px 13px;font-size:13.5px;line-height:1.45}
+.warn{margin-top:10px;border:1px solid #3a3a36;border-left:3px solid var(--accent);background:#141413;color:var(--fg);border-radius:10px;padding:11px 13px;font-size:13.5px;line-height:1.45}
 .sav ul{list-style:none}.sav li{position:relative;padding:0 0 9px 18px;font-size:14px;line-height:1.5;color:#cfcdc6}
 .sav li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .soon{margin-top:18px;border:1px dashed #3a3a36;border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--mute)}
@@ -133,7 +133,7 @@ nav ul a{opacity:.85}nav ul a:hover,nav ul a.on{opacity:1;color:var(--accent)}
     <p class="note" id="pNote"></p>
     <div class="prat" id="pPrat"></div>
     <div class="sav" id="pSav"></div>
-    <h3 style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:500;margin:22px 0 4px">Mes sorties & conseils photo</h3>
+    <h3 style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:500;margin:22px 0 4px">Conseils photo</h3>
     <div class="facts" id="pFacts"></div>
     <div class="go"><a id="pMaps" target="_blank" rel="noopener">Itinéraire ↗</a><a href="index.html#travaux">Toutes les photos</a></div>
     <p class="ftnote">Infos vérifiées en novembre 2026 auprès des offices de tourisme. Elles peuvent changer : vérifie avant de partir. Drone : consulte la <a href="https://www.geoportail.gouv.fr/donnees/restrictions-uas-categorie-ouverte-et-aeromodelisme" target="_blank" rel="noopener">carte des zones drones</a> avant de décoller.</p>
@@ -157,49 +157,67 @@ sommet:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=
 village:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V11l5-4 5 4v9M13 20v-6l4-3 4 3v6M2 20h20M7 20v-4h2v4"/></svg>'};
 const L_={lever:'Lever de soleil',coucher:'Coucher de soleil',lac:'Lac',volcan:'Volcan',cascade:'Cascade',nuages:'Mer de nuages',hiver:'Hiver',automne:'Automne',drone:'Vue drone',sommet:'Sommet & crête',village:'Village'};
 const SPOTS=[
-{id:'puy-de-dome',p:{park:'Gratuit',pk:'Col de Ceyssat · toilettes et point d\'eau',q:'Parking du Col de Ceyssat',diff:2,marche:'30 min à 1 h de montée',dist:'≈ 2,5 km · +350 m',sav:['Le parking est souvent complet en juillet-août : viens avant 10 h.','Descente glissante (petits cailloux) : bonnes chaussures et bâtons conseillés.','En hiver le chemin peut geler : prévois des crampons.','Sans effort : le train Panoramique des Dômes monte au sommet (payant).']},t:'Puy de Dôme',m:'Chaîne des Puys',ll:[45.7722,2.9643],alt:'1 465 m',main:'volcan',tags:['volcan','lever','coucher','drone'],
+{id:'puy-de-dome',p:{dog:'En laisse (troupeaux dans la Chaîne des Puys)',park:'Gratuit',pk:'Col de Ceyssat · toilettes et point d\'eau',q:'Parking du Col de Ceyssat',diff:2,marche:'30 min à 1 h de montée',dist:'≈ 2,5 km · +350 m',sav:['Le parking est souvent complet en juillet-août : viens avant 10 h.','Descente glissante (petits cailloux) : bonnes chaussures et bâtons conseillés.','En hiver le chemin peut geler : prévois des crampons.','Sans effort : le train Panoramique des Dômes monte au sommet (payant).']},t:'Puy de Dôme',m:'Chaîne des Puys',ll:[45.7722,2.9643],alt:'1 465 m',main:'volcan',tags:['volcan','lever','coucher','drone'],
  ph:['img/pdd-01.jpg','img/pdd-02.jpg','img/pdd-03.jpg','img/pdd-04.jpg','img/05-le-puy-de-dome-d-en-haut.jpg'],
- f:[['Mes sorties','8 août 2026 (soir) · 14 nov. 2026 (matin)'],['Meilleure lumière','Lever et coucher'],['Accès','Chemin des Muletiers ou train panoramique']],
+ f:[['Meilleure lumière','Lever et coucher'],['Accès','Chemin des Muletiers ou train panoramique']],
  n:'<b>Le spot incontournable.</b> Le matin, le soleil rasant allume le sommet pendant que la plaine reste givrée. Le soir, en été, on voit l\'antenne, le temple de Mercure et les lacets jusqu\'à 21 h passées.'},
-{id:'pavin',p:{park:'Gratuit',pk:'À 100 m du lac · place PMR',q:'Lac Pavin, Besse-et-Saint-Anastaise',diff:1,marche:'1 h pour le tour du lac',dist:'2,7 km · +93 m',sav:['Baignade interdite (chiens compris).','Vélos et engins motorisés interdits sur le sentier.','Camping-cars : stationnement de jour uniquement.']},t:'Lac Pavin',m:'Monts Dore',ll:[45.4955,2.8890],alt:'1 197 m',main:'lac',tags:['lac','lever','automne','drone'],
+{id:'pavin',p:{dog:'En laisse · baignade interdite aux chiens aussi',park:'Gratuit',pk:'À 100 m du lac · place PMR',q:'Lac Pavin, Besse-et-Saint-Anastaise',diff:1,marche:'1 h pour le tour du lac',dist:'2,7 km · +93 m',sav:['Baignade interdite (chiens compris).','Vélos et engins motorisés interdits sur le sentier.','Camping-cars : stationnement de jour uniquement.']},t:'Lac Pavin',m:'Monts Dore',ll:[45.4955,2.8890],alt:'1 197 m',main:'lac',tags:['lac','lever','automne','drone'],
  ph:['img/pavin-02.jpg','img/01-pavin-une-heure-plus-tard.jpg','img/pavin-12.jpg','img/pavin-01.jpg','img/pavin-03.jpg','img/pavin-05.jpg','img/pavin-06.jpg'],
- f:[['Mes sorties','18 août 2026 (matin) · 6 nov. 2026'],['Meilleure période','Début novembre pour les hêtres'],['Accès','Parking au bord du lac, tour du lac facile']],
+ f:[['Meilleure période','Début novembre pour les hêtres'],['Accès','Parking au bord du lac, tour du lac facile']],
  n:'<b>Mon lac préféré en automne.</b> Le cratère parfaitement rond se couvre de hêtres orange début novembre. Le matin, une fine brume reste accrochée à la rive d\'en face.'},
-{id:'serviere',p:{park:'Sur place',pk:'En face du gîte du lac de Servières',q:'Lac de Servières, Orcival',diff:1,marche:'45 min pour le tour',dist:'2,1 km · +25 m',sav:['Baignade et canoë interdits.','Chiens en laisse (troupeaux autour du lac).','Pique-nique au bord du lac autorisé, feux et camping interdits.']},t:'Lac de Servière',m:'Monts Dore',ll:[45.6420,2.8560],alt:'1 202 m',main:'lac',tags:['lac','drone','automne'],
+{id:'serviere',p:{dog:'En laisse, à distance des troupeaux',park:'Sur place',pk:'En face du gîte du lac de Servières',q:'Lac de Servières, Orcival',diff:1,marche:'45 min pour le tour',dist:'2,1 km · +25 m',sav:['Baignade et canoë interdits.','Chiens en laisse (troupeaux autour du lac).','Pique-nique au bord du lac autorisé, feux et camping interdits.']},t:'Lac de Servière',m:'Monts Dore',ll:[45.6420,2.8560],alt:'1 202 m',main:'lac',tags:['lac','drone','automne'],
  ph:['img/serviere-02.jpg','img/serviere-01.jpg','img/serviere-03.jpg','img/serviere-04.jpg','img/serviere-05.jpg','img/17-cratere-plein-d-eau.jpg'],
- f:[['Mes sorties','23 mai 2026 · 9 nov. 2026'],['Point fort','Le lac vu d\'en haut'],['À voir','La Chaîne des Puys à l\'horizon']],
+ f:[['Point fort','Le lac vu d\'en haut'],['À voir','La Chaîne des Puys à l\'horizon']],
  n:'<b>Un œil sombre au milieu des sapins.</b> Vu du ciel, l\'eau passe du turquoise au bleu nuit, et la Chaîne des Puys s\'aligne au loin.'},
 {id:'cezallier',t:'Mer de nuages du Cézallier',m:'Cézallier',ll:[45.4531,2.8373],alt:'≈ 1 550 m (drone)',main:'nuages',tags:['nuages','lever','drone'],
  ph:['img/04-mer-de-nuages-6-h-35.jpg','img/03-un-sommet-au-dessus-de-la-couche.jpg'],
- f:[['Ma sortie','18 août 2026, 6 h 35'],['Meilleure lumière','Lever de soleil'],['Condition','Nuit fraîche et claire, nuages bas au matin']],
+ f:[['Meilleure lumière','Lever de soleil'],['Condition','Nuit fraîche et claire, nuages bas au matin']],
  n:'<b>Au-dessus de la couche.</b> Le drone perce les nuages vers 1 550 m et le ciel vire au rose quelques minutes après. En dessous, tout est resté gris jusqu\'à midi.'},
-{id:'pariou',p:{park:'Sur place',pk:'Parking des Goules (D941) · plein vite l\'été',q:'Parking des Goules, Orcines',diff:1,marche:'≈ 2 h 30 la boucle',dist:'≈ 6 km · +235 m',sav:['Interdit de descendre dans le cratère : on l\'admire depuis le bord.','Arrive tôt en haute saison, le parking se remplit vite.','Pas de réseau mobile au parking.']},t:'Puy de Pariou',m:'Chaîne des Puys',ll:[45.7965,2.9696],alt:'1 209 m',main:'volcan',tags:['volcan','hiver','drone','nuages'],
+{id:'pariou',p:{dog:'En laisse (troupeaux)',park:'Sur place',pk:'Parking des Goules (D941) · plein vite l\'été',q:'Parking des Goules, Orcines',diff:1,marche:'≈ 2 h 30 la boucle',dist:'≈ 6 km · +235 m',sav:['Interdit de descendre dans le cratère : on l\'admire depuis le bord.','Arrive tôt en haute saison, le parking se remplit vite.','Pas de réseau mobile au parking.']},t:'Puy de Pariou',m:'Chaîne des Puys',ll:[45.7965,2.9696],alt:'1 209 m',main:'volcan',tags:['volcan','hiver','drone','nuages'],
  ph:['img/31-le-cratere-emerge.jpg','img/32-le-cratere-sous-la-neige.jpg'],
  f:[['Meilleure période','Hiver, après une chute de neige'],['Point fort','Le cratère vu d\'en haut'],['Accès','Sentier depuis le col des Goules']],
  n:'<b>Le cratère presque parfait.</b> Sous la neige, il dessine un cercle blanc vu à la verticale. Par temps de mer de nuages, il émerge avec son voisin.'},
 {id:'puys-nord',t:'Aube d\'hiver sur les Puys',m:'Chaîne des Puys (nord)',ll:[45.8248,2.9554],alt:'≈ 1 200 m (drone)',main:'lever',tags:['lever','hiver','volcan','drone'],
  ph:['img/29-aube-d-hiver.jpg','img/30-silhouette.jpg','img/28-givre-au-lever.jpg'],
- f:[['Ma sortie','31 décembre 2025, 7 h 46 – 8 h 05'],['Meilleure lumière','Aube, avant le lever'],['À voir','Les cônes en ombres chinoises']],
+ f:[['Meilleure lumière','Aube, avant le lever'],['À voir','Les cônes en ombres chinoises']],
  n:'<b>Le dernier matin de l\'année.</b> Les volcans se découpent en silhouettes sur l\'orange, la neige reste dans les creux et le givre tient sur les herbes.'},
-{id:'cones',t:'Les cônes en enfilade',m:'Chaîne des Puys',ll:[45.8128,2.9817],alt:'≈ 1 230 m (drone)',main:'volcan',tags:['volcan','drone'],
+{id:'goules',t:'Puy des Goules',m:'Chaîne des Puys',ll:[45.8128,2.9817],alt:'1 146 m',main:'volcan',tags:['volcan','drone'],
+ p:{dog:'En laisse (troupeaux)',park:'Sur place',pk:'Parking des Goules (D941) · plein vite l\'été',q:'Parking des Goules, Orcines',diff:1,marche:'Courte montée depuis le parking',dist:'≈ +150 m de dénivelé',sav:['Même parking que le Puy de Pariou : arrive tôt en haute saison.','Pas de réseau mobile au parking.']},
  ph:['img/21-les-cones-en-enfilade.jpg','img/22-cumulus-sur-le-puy.jpg'],
- f:[['Ma sortie','8 mai 2026, après-midi'],['Point fort','L\'alignement des puys'],['Astuce','Les cumulus se forment au-dessus des cônes l\'après-midi']],
- n:'<b>Tous de la même famille.</b> D\'ici, les puys s\'alignent jusqu\'à l\'horizon.'},
-{id:'barre',t:'Barre rocheuse des Monts Dore',m:'Monts Dore',ll:[45.5981,2.7896],alt:'≈ 1 445 m',main:'sommet',tags:['sommet','lever','drone'],
+ f:[['Point fort','L\'alignement des puys'],['Astuce','Les cumulus se forment au-dessus des cônes l\'après-midi']],
+ n:'<b>Tous de la même famille.</b> Depuis le puy des Goules, les cônes de la Chaîne des Puys s\'alignent jusqu\'à l\'horizon, avec le Pariou juste à côté.'},
+{id:'puy-gros',t:'Puy Gros',m:'Monts Dore',ll:[45.5981,2.7896],alt:'1 485 m',main:'sommet',tags:['sommet','lever','drone'],
+ p:{dog:'En laisse',park:'Au choix',pk:'Parking du lac de Guéry (payant en saison) ou refuge de la Banne d\'Ordanche',q:'Col de Guéry',diff:2,marche:'Demi-journée en boucle depuis le Guéry · plus court depuis le refuge de la Banne',dist:'≈ 13 km · +400 m (boucle Banne d\'Ordanche + Puy Gros)',sav:['Facile à perdre le sentier dans le brouillard : prends la trace GPS.','Prudence sur la crête et les corniches par mauvais temps.']},
  ph:['img/23-face-au-massif.jpg','img/24-seul-sur-le-rocher.jpg','img/25-arete-huit-heures-du-matin.jpg'],
- f:[['Ma sortie','25 avril 2026, 8 h 17'],['Meilleure lumière','Matin'],['À voir','Les sommets encore enneigés en avril']],
- n:'<b>Face au massif.</b> Debout au bord de la barre rocheuse, avec les sommets d\'en face encore sous la neige fin avril.'},
-{id:'cretes',t:'Crêtes au-dessus du Mont-Dore',m:'Monts Dore',ll:[45.5892,2.8448],alt:'≈ 1 500 m',main:'coucher',tags:['coucher','sommet','drone'],
+ f:[['Meilleure lumière','Matin'],['À voir','Le Sancy encore enneigé en avril']],
+ n:'<b>Face au massif.</b> Debout au bord de la barre rocheuse, avec le Sancy en face encore sous la neige fin avril. Vue sur la vallée de la Dordogne, Le Mont-Dore et La Bourboule.'},
+{id:'puy-de-la-tache',t:'Puy de la Tache',m:'Monts Dore',ll:[45.5892,2.8448],alt:'1 629 m',main:'coucher',tags:['coucher','sommet','drone'],
+ p:{dog:'Interdits sur ce sentier',park:'Gratuit',pk:'Col de la Croix-Morand · toilettes sur place',q:'Col de la Croix Morand',diff:3,marche:'≈ 1 h 30 aller-retour',dist:'≈ +220 m depuis le col',warn:'La route du col de la Croix-Morand est fermée l\'hiver à cause de la neige.',sav:['Montée raide par endroits, bonnes chaussures conseillées.','Sentier balisé d\'avril à octobre.']},
  ph:['img/19-sous-l-averse.jpg','img/20-au-ras-de-l-herbe.jpg'],
- f:[['Ma sortie','20 mai 2026, 18 h 22 – 19 h 29'],['Meilleure lumière','Fin de journée'],['À voir','Fleurs d\'altitude au printemps']],
- n:'<b>Entre averse et soleil.</b> Les crêtes restent au soleil en fin de journée, avec les fleurs au premier plan.'},
-{id:'cascade',p:{park:'Sur place',pk:'Centre du Mont-Dore · départ face à la mairie',q:'Mairie, Le Mont-Dore',diff:2,marche:'≈ 1 h 30 aller-retour',dist:'≈ 5 km A/R · +225 m',warn:'Fermé du 15 novembre au 1<sup>er</sup> avril (arrêté municipal).',sav:['Montée raide dans la hêtraie, sentier caillouteux et glissant après la pluie.','Chiens en laisse, troupeau de brebis avec patous en été.','Pas de sortie par temps d\'orage.']},t:'Grande Cascade du Mont-Dore',m:'Monts Dore',ll:[45.5603,2.8167],alt:'≈ 1 250 m',main:'cascade',tags:['cascade'],
+ f:[['Meilleure lumière','Fin de journée'],['À voir','Fleurs d\'altitude au printemps']],
+ n:'<b>Entre averse et soleil.</b> La crête reste au soleil en fin de journée, avec les fleurs d\'altitude au premier plan et le Sancy en face.'},
+{id:'guery',t:'Lac du Guéry',m:'Monts Dore',ll:[45.6083,2.8204],alt:'1 250 m',main:'lac',tags:['lac','hiver','lever','drone'],
+ p:{dog:'En laisse obligatoire',park:'Payant en saison',pk:'Col de Guéry · payant de mai à sept. (week-ends, fériés, vacances, 9 h–18 h), 4 € la journée. Gratuit le reste du temps',q:'Col de Guéry',diff:1,marche:'1 h 30 à 2 h le tour (par la cascade du Guéry)',dist:'Boucle facile autour du lac',sav:['Baignade, plongée et canotage interdits.','Stationnement interdit le long de la route du lac (D983).','L\'hiver, le lac gèle : ne marche jamais sur la glace.']},
+ ph:['img/guery-02.jpg','img/guery-03.jpg','img/guery-01.jpg'],
+ f:[['Meilleure période','Hiver, lac gelé et sapins givrés'],['Point fort','La rive vue à la verticale au drone']],
+ n:'<b>Le plus haut lac d\'Auvergne.</b> L\'hiver, il gèle et se couvre de neige : vus du drone, les sapins givrés dessinent la rive. Au printemps, le soleil se lève derrière les Monts Dore.'},
+{id:'plateau-guery',t:'Plateau du Guéry',m:'Monts Dore',ll:[45.6165,2.8275],alt:'≈ 1 300 – 1 480 m',main:'hiver',tags:['hiver','lever','coucher','drone'],
+ p:{dog:'En laisse (troupeaux en été)',park:'Payant en saison',pk:'Col de Guéry · même parking que le lac',q:'Col de Guéry',diff:2,marche:'Boucle du plateau : ≈ 4 h 30',dist:'13,2 km · +530 m (ou balade libre)',sav:['L\'hiver, ne marche pas sur les pistes de ski de fond quand le domaine nordique est ouvert.','Fin avril, le plateau se couvre de jonquilles : reste sur les sentiers.','Vue sur le Sancy, la Banne d\'Ordanche et le Puy Gros.']},
+ ph:['img/plateau-guery-01.jpg','img/plateau-guery-02.jpg'],
+ f:[['Meilleure période','Hiver sous la neige · fin avril pour les jonquilles'],['Meilleure lumière','Lever et coucher']],
+ n:'<b>Le grand blanc.</b> Sous la neige, le plateau devient une immense étendue avec les sapins en îlots et les Monts Dore au fond. Fin avril, les jonquilles le recouvrent au lever du soleil.'},
+{id:'puy-de-l-angle',t:'Puy de l\'Angle',m:'Monts Dore',ll:[45.5622,2.8494],alt:'1 738 m',main:'sommet',tags:['sommet','hiver','lever','drone'],
+ p:{dog:'En laisse · interdits dans la réserve de Chaudefour (hors GR)',park:'Sur place',pk:'Parking du col de la Croix Saint-Robert',q:'Col de la Croix Saint-Robert',diff:2,marche:'≈ 2 h aller-retour',dist:'3,6 km A/R · +295 m',sav:['Le parking est à 1 451 m : la montée est courte mais exposée au vent.','Vue sur le Sancy et ses crêtes, encore enneigés en mars.']},
+ ph:['img/angle-01.jpg','img/angle-02.jpg','img/angle-03.jpg'],
+ f:[['Meilleure période','Fin d\'hiver, neige sur les crêtes'],['Meilleure lumière','Matin, ciel bien dégagé']],
+ n:'<b>Le Sancy en face.</b> Au sommet, une croix sur son cairn et, juste en face, les crêtes du Sancy encore sous la neige. Vu du drone, les estives dessinent des parcelles jusqu\'au pied du massif.'},
+{id:'cascade',p:{dog:'En laisse obligatoire',park:'Sur place',pk:'Par le bas : Le Mont-Dore (face à la mairie). Par le haut : col de la Croix Saint-Robert',q:'Mairie, Le Mont-Dore',diff:2,marche:'≈ 1 h 30 aller-retour',dist:'≈ 5 km A/R · +225 m',warn:'Fermé du 15 novembre au 1<sup>er</sup> avril (arrêté municipal).',sav:['Deux accès : par le bas depuis Le Mont-Dore, ou par le haut depuis le parking du col de la Croix Saint-Robert (plateau de Durbise).','Montée raide dans la hêtraie, sentier caillouteux et glissant après la pluie.','Chiens en laisse, troupeau de brebis avec patous en été.','Pas de sortie par temps d\'orage.']},t:'Grande Cascade du Mont-Dore',m:'Monts Dore',ll:[45.5603,2.8167],alt:'≈ 1 250 m',main:'cascade',tags:['cascade'],
  ph:['dl/th-hugoprch-21.jpg'],
- f:[['Ma sortie','21 mars 2026'],['Hauteur de chute','32 m'],['Accès','Sentier depuis Le Mont-Dore']],
+ f:[['Hauteur de chute','32 m'],['Accès','Le Mont-Dore ou col de la Croix Saint-Robert']],
  n:'<b>La plus haute cascade d\'Auvergne : 32 m de chute.</b> Une passerelle passe au pied de la chute, puis un escalier métallique grimpe vers le plateau de Durbise.'},
-{id:'montpeyroux',p:{park:'Gratuit',pk:'Grand parking à l\'entrée du village',q:'Montpeyroux 63114',diff:1,marche:'Balade libre dans les ruelles',dist:'Village à pied',sav:['On ne peut pas se garer dans le village : laisse la voiture en bas.','À voir : le donjon du XIII<sup>e</sup> siècle et la porte à l\'horloge.']},t:'Montpeyroux',m:'Val d\'Allier',ll:[45.6236,3.2008],alt:'≈ 450 m',main:'village',tags:['village','drone'],
+{id:'montpeyroux',p:{dog:'En laisse dans le village',park:'Gratuit',pk:'Grand parking à l\'entrée du village',q:'Montpeyroux 63114',diff:1,marche:'Balade libre dans les ruelles',dist:'Village à pied',sav:['On ne peut pas se garer dans le village : laisse la voiture en bas.','À voir : le donjon du XIII<sup>e</sup> siècle et la porte à l\'horloge.']},t:'Montpeyroux',m:'Val d\'Allier',ll:[45.6236,3.2008],alt:'≈ 450 m',main:'village',tags:['village','drone'],
  ph:['dl/th-hugoprch-11.jpg','dl/th-hugoprch-12.jpg'],
- f:[['Ma sortie','Octobre 2026'],['Point fort','Le village perché vu du ciel'],['Label','Un des plus beaux villages de France']],
+ f:[['Point fort','Le village perché vu du ciel'],['Label','Un des plus beaux villages de France']],
  n:'<b>Un village perché sur sa butte.</b> Vu au drone, les toits se resserrent autour du donjon, avec la plaine de l\'Allier tout autour.'}
 ];
 const AUV=L.latLngBounds([[45.0,2.3],[46.2,3.6]]);
@@ -257,15 +275,16 @@ const IC={park:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 diff:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M2 20 10 7l4 6 2-3 6 10z"/></svg>',
 time:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
 dist:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19c4 0 4-6 8-6s4-6 8-6"/><circle cx="4" cy="19" r="1.5"/><circle cx="20" cy="7" r="1.5"/></svg>'};
+IC.dog='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="10" r="1.8"/><circle cx="10" cy="5.5" r="1.8"/><circle cx="14" cy="5.5" r="1.8"/><circle cx="18" cy="10" r="1.8"/><path d="M12 11c-3 0-5.5 4-5.5 6.2 0 1.6 1.3 2.3 2.7 2 1-.2 1.8-.6 2.8-.6s1.8.4 2.8.6c1.4.3 2.7-.4 2.7-2C17.5 15 15 11 12 11z"/></svg>';
 const DL=['','Facile','Moyen','Sportif'];
 function renderPrat(s){const p=s.p;
  if(!p){pPrat.innerHTML='<div class="soon">Infos pratiques (parking, accès, difficulté) bientôt disponibles pour ce spot.</div>';pSav.innerHTML='';return}
- const bc=p.park==='Gratuit'?'free':p.park==='Payant'?'pay':'na';
- pPrat.innerHTML=`<h3>Infos pratiques</h3>${p.warn?`<div class="warn">⚠︎ ${p.warn}</div><div style="height:8px"></div>`:''}<div class="pgrid">
+ const bc=p.park==='Gratuit'?'free':/^Payant/.test(p.park)?'pay':'na';
+ pPrat.innerHTML=`<h3>Infos pratiques</h3>${p.warn?`<div class="warn"><span style="color:var(--accent)">⚠︎</span> ${p.warn}</div><div style="height:8px"></div>`:''}<div class="pgrid">
  <div class="pc"><div class="k">${IC.park}Parking</div><span class="badge ${bc}">${p.park}</span><div class="s">${p.pk}</div></div>
  <div class="pc"><div class="k">${IC.diff}Difficulté</div><div class="v">${DL[p.diff]}</div><div class="lvl">${[1,2,3].map(i=>`<i class="${i<=p.diff?'on':''}"></i>`).join('')}</div></div>
  <div class="pc"><div class="k">${IC.time}Marche</div><div class="v" style="font-size:14.5px">${p.marche}</div></div>
- <div class="pc"><div class="k">${IC.dist}Distance</div><div class="v" style="font-size:14.5px">${p.dist}</div></div></div>`;
+ <div class="pc"><div class="k">${IC.dist}Distance</div><div class="v" style="font-size:14.5px">${p.dist}</div></div>${p.dog?`<div class="pc" style="grid-column:1/-1"><div class="k">${IC.dog}Chiens</div><div class="v" style="font-size:14.5px">${p.dog}</div></div>`:''}</div>`;
  pSav.innerHTML=p.sav&&p.sav.length?`<h3>À savoir</h3><ul>${p.sav.map(x=>`<li>${x}</li>`).join('')}</ul>`:'';
 }
 function closeSpot(){P.classList.remove('open');P.setAttribute('aria-hidden','true');document.querySelectorAll('.pin').forEach(p=>p.classList.remove('sel'));history.replaceState(null,'',location.pathname)}
