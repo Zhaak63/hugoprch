@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Laissez-moi vos coordonnées — Hugoprch</title>
+<link rel="icon" type="image/png" href="img/email/portrait.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0b;--fg:#ecebe6;--mute:#8a8983;--line:#2a2a27;--accent:#d9c7a3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font-family:"Inter Tight",system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+.hero{position:relative;height:34vh;min-height:220px;background:url(img/pavin-11.jpg) center 45%/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,11,.2),var(--bg))}
+.wrap{max-width:560px;margin:-70px auto 0;padding:0 22px 60px;position:relative;z-index:2}
+.k{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+h1{font-size:42px;font-weight:500;letter-spacing:-.04em;line-height:1;margin:12px 0 14px}
+.serif{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--accent)}
+.intro{font-size:16px;line-height:1.55;color:#cfcdc6;margin-bottom:26px}
+label{display:block;font-size:13px;color:var(--mute);margin:18px 0 7px}
+input,select,textarea{width:100%;background:#141413;border:1px solid var(--line);border-radius:12px;color:var(--fg);font:inherit;font-size:16px;padding:14px 15px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:90px;resize:vertical}
+.chk{display:flex;gap:12px;align-items:flex-start;margin-top:14px;font-size:15px;line-height:1.4;color:#d6d5cf}
+.chk input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:#d9c7a3}
+.btn{margin-top:28px;width:100%;background:var(--fg);color:var(--bg);border:0;border-radius:99px;padding:17px;font:inherit;font-size:16px;font-weight:500;cursor:pointer}
+.btn:disabled{opacity:.6}
+.msg{margin-top:16px;font-size:15px;line-height:1.5;color:#cfcdc6;min-height:22px}
+.msg.ok{color:var(--accent)}
+.hp{position:absolute;left:-9999px}
+.foot{margin-top:40px;font-size:13px;color:var(--mute);line-height:1.6}
+.foot a{color:var(--fg)}
+.done{display:none;text-align:center;padding:40px 0}
+.done .big{font-size:40px;font-weight:500;letter-spacing:-.03em;margin:14px 0}
+</style>
+</head>
+<body>
+<div class="hero"></div>
+<main class="wrap">
+  <div id="formbox">
+    <div class="k">Salon Origine Auvergne · 2026</div>
+    <h1>Restons <span class="serif">en contact.</span></h1>
+    <p class="intro">Je suis Hugo, photographe rando et drone en Auvergne (@hugoprch). Laissez-moi vos coordonnées : je vous envoie les photos de votre stand dans la semaine.</p>
+    <form id="f" novalidate>
+      <label for="nom">Prénom et nom *</label><input id="nom" name="Nom" required autocomplete="name">
+      <label for="marque">Marque / stand *</label><input id="marque" name="Marque" required autocomplete="organization">
+      <label for="email">E-mail *</label><input id="email" name="email" type="email" required autocomplete="email" inputmode="email">
+      <label for="insta">Instagram</label><input id="insta" name="Instagram" placeholder="@votrecompte" autocapitalize="off">
+      <label for="tel">Téléphone (facultatif)</label><input id="tel" name="Telephone" type="tel" autocomplete="tel" inputmode="tel">
+      <label for="act">Activité</label>
+      <select id="act" name="Activite"><option>Gastronomie / boissons</option><option>Artisanat / déco</option><option>Textile / équipement</option><option>Tourisme / territoire</option><option>Autre</option></select>
+      <div class="chk"><input type="checkbox" id="c1" name="Photos du stand" value="Oui" checked><label for="c1" style="margin:0;color:inherit;font-size:inherit">Je veux recevoir les photos de mon stand</label></div>
+      <div class="chk"><input type="checkbox" id="c2" name="Ouvert a une collab" value="Oui"><label for="c2" style="margin:0;color:inherit;font-size:inherit">Je suis ouvert(e) à une collaboration photo / vidéo</label></div>
+      <label for="msg">Un mot (facultatif)</label><textarea id="msg" name="Message"></textarea>
+      <div class="chk"><input type="checkbox" id="rgpd" name="Accord" value="Oui" required><label for="rgpd" style="margin:0;color:inherit;font-size:inherit">J'accepte qu'Hugoprch me recontacte au sujet de ces photos. Mes données ne sont pas partagées. *</label></div>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off">
+      <button class="btn" id="send" type="submit">Envoyer</button>
+      <div class="msg" id="out"></div>
+    </form>
+  </div>
+  <div class="done" id="done">
+    <div class="k">C'est noté</div>
+    <div class="big">Merci <span class="serif" id="who"></span> !</div>
+    <p class="intro">Je vous envoie les photos de votre stand dans la semaine.<br>En attendant, venez voir mon travail.</p>
+    <a class="btn" style="display:block;text-decoration:none" href="https://www.instagram.com/hugoprch/">Voir @hugoprch sur Instagram</a>
+    <a class="btn" style="display:block;text-decoration:none;background:transparent;color:var(--fg);border:1px solid #444;margin-top:12px" href="index.html">Voir le portfolio</a>
+  </div>
+  <p class="foot">Hugoprch · photographe rando &amp; drone · Auvergne<br><a href="index.html">hugoprch.fr</a> · <a href="mailto:hugoprch63@gmail.com">hugoprch63@gmail.com</a></p>
+</main>
+<script>
+document.getElementById('f').addEventListener('submit',async e=>{
+  e.preventDefault();const f=e.target,out=document.getElementById('out'),b=document.getElementById('send');
+  if(!f.checkValidity()){out.className='msg';out.textContent='Merci de remplir le nom, la marque, un e-mail valide et de cocher l\'accord.';return}
+  const data=Object.fromEntries(new FormData(f));
+  data._subject='Salon Origine Auvergne — '+(data.Marque||data.Nom);data._template='table';
+  data._autoresponse='Merci pour votre passage ! Je vous envoie les photos de votre stand dans la semaine. À très vite, Hugo — photographe rando & drone en Auvergne · @hugoprch · hugoprch.fr';
+  b.disabled=true;out.className='msg';out.textContent='Envoi en cours…';
+  try{const r=await fetch('https://formsubmit.co/ajax/hugoprch63@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
+    const j=await r.json().catch(()=>({}));if(!r.ok||j.success==='false'||j.success===false)throw 0;
+    document.getElementById('who').textContent=(data.Nom||'').split(' ')[0];
+    document.getElementById('formbox').style.display='none';document.getElementById('done').style.display='block';scrollTo(0,0)}
+  catch(_){out.className='msg';out.innerHTML='L\'envoi n\'a pas fonctionné. Écrivez-moi à <a href="mailto:hugoprch63@gmail.com" style="text-decoration:underline">hugoprch63@gmail.com</a>.';b.disabled=false}
+});
+</script>
+</body>
+</html>
