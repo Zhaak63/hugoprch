@@ -74,16 +74,17 @@ document.getElementById('f').addEventListener('submit',async e=>{
   e.preventDefault();const f=e.target,out=document.getElementById('out'),b=document.getElementById('send');
   if(!f.checkValidity()){out.className='msg';out.textContent='Merci de remplir le nom, la marque, un e-mail valide et de cocher l\'accord.';return}
   const data=Object.fromEntries(new FormData(f));
-  data._subject='Salon Origine Auvergne — '+(data.Marque||data.Nom);data._template='table';
-  data._autoresponse='Merci pour votre passage ! Je vous envoie les photos de votre stand dans la semaine. À très vite, Hugo — photographe rando & drone en Auvergne · @hugoprch · hugoprch.fr';
+  const opts=[data['Photos du stand']?'Veut les photos du stand':'',data['Ouvert a une collab']?'Ouvert à une collab':''].filter(Boolean).join(' · ');
+  const E={Nom:'entry.1376504559',Marque:'entry.1694051675',email:'entry.1995845120',Instagram:'entry.46092734',Telephone:'entry.1656877189',Activite:'entry.1167168329',Message:'entry.1416941644'};
+  const body=new URLSearchParams();for(const k in E){if(data[k])body.append(E[k],data[k])}if(opts)body.append('entry.516783452',opts);
   b.disabled=true;out.className='msg';out.textContent='Envoi en cours…';
   const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),15000);
-  try{const r=await fetch('https://formsubmit.co/ajax/hugoprch63@gmail.com',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
-    clearTimeout(to);const j=await r.json().catch(()=>({}));if(!r.ok||j.success==='false'||j.success===false)throw 0;
+  try{await fetch('https://docs.google.com/forms/d/e/1FAIpQLSeod___QmXNz7x9ic8aJOy6-nlKAlh9eBUplZllAitN-f4BmA/formResponse',{method:'POST',mode:'no-cors',signal:ctl.signal,body});
+    clearTimeout(to);
     document.getElementById('who').textContent=(data.Nom||'').split(' ')[0];
     document.getElementById('formbox').style.display='none';document.getElementById('done').style.display='block';scrollTo(0,0)}
   catch(_){clearTimeout(to);
-    const lines=['Nom','Marque','email','Instagram','Telephone','Activite','Photos du stand','Ouvert a une collab','Message'].filter(k=>data[k]).map(k=>k+' : '+data[k]);
+    const lines=['Nom','Marque','email','Instagram','Telephone','Activite','Message'].filter(k=>data[k]).map(k=>k+' : '+data[k]);if(opts)lines.push(opts);
     const href='mailto:hugoprch63@gmail.com?subject='+encodeURIComponent('Salon Origine Auvergne — '+(data.Marque||data.Nom))+'&body='+encodeURIComponent(lines.join('\n'));
     out.className='msg';out.innerHTML='Le réseau est capricieux ici. Envoyez-moi vos coordonnées par e-mail en un clic :<a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:14px" href="'+href+'">Envoyer par e-mail</a>';
     b.disabled=false}
